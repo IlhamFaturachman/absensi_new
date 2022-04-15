@@ -1,3 +1,4 @@
+import 'package:absen_new/login.dart';
 import 'package:absen_new/pages/guru/home.dart';
 import 'package:absen_new/pages/guru/input_absen.dart';
 import 'package:absen_new/pages/murid/list_murid.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const ListMurid(),
+      home: const LoginPage(),
     );
   }
 }
