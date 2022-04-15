@@ -34,7 +34,7 @@ class _NavbarGuruState extends State<NavbarGuru> {
                 children: [
                   CustomPaint(
                     size: Size(size.width, 70),
-                    painter: BNBCustomPainter(),
+                    foregroundPainter: BNBCustomPainter(),
                   ),
                   Center(
                     heightFactor: 0.1,
