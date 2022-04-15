@@ -35,7 +35,7 @@ class _HomePageGuruState extends State<HomePageGuru> {
           ],
         ),
       ),
-      bottomNavigationBar: NavbarGuru(),
+      //bottomNavigationBar: NavbarGuru(),
     );
   }
 }
