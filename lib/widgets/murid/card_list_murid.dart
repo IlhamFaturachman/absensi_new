@@ -22,7 +22,7 @@ class _CardListMurid extends State<CardListMurid> {
         children: [
           Padding(
             padding: EdgeInsets.only(
-                top: size.height * 0.01, left: size.width * 0),
+                top: size.height * 0.005, right: size.width * 0.05),
             child: Stack(
               children: [
                 Padding(
@@ -62,7 +62,7 @@ class _CardListMurid extends State<CardListMurid> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: size.width * 0.38),
+                            padding: EdgeInsets.only(left: size.width * 0.5),
                             child: Text(
                               widget.jam,
                               style: TextStyle(
