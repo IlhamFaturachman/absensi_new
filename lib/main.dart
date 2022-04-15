@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import 'package:absen_new/login.dart';
+=======
+import 'package:absen_new/pages/guru/history_guru.dart';
+>>>>>>> ffa213ce3e146f596aa0b552924d6dd6cc5bcd62
 import 'package:absen_new/pages/guru/home.dart';
 import 'package:absen_new/pages/guru/input_absen.dart';
+import 'package:absen_new/pages/murid/history_murid.dart';
 import 'package:absen_new/pages/murid/list_murid.dart';
 import 'package:absen_new/widgets/guru/navbarguru.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +35,11 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
+<<<<<<< HEAD
       home: const LoginPage(),
+=======
+      home: const HistoryMurid(),
+>>>>>>> ffa213ce3e146f596aa0b552924d6dd6cc5bcd62
     );
   }
 }
