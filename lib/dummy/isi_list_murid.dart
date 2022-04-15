@@ -13,9 +13,49 @@ class IsiListMurid extends StatelessWidget {
         // ignore: prefer_const_literals_to_create_immutables
         children: [
           CardListMurid(
-              nama: "Alex",
-              jam: "07.00",)
-          
+            nama: "Alex",
+            jam: "07.00",
+          ),
+          CardListMurid(
+            nama: "Alex",
+            jam: "07.00",
+          ),
+          CardListMurid(
+            nama: "Alex",
+            jam: "07.00",
+          ),
+          CardListMurid(
+            nama: "Alex",
+            jam: "07.00",
+          ),
+          CardListMurid(
+            nama: "Alex",
+            jam: "07.00",
+          ),
+          CardListMurid(
+            nama: "Alex",
+            jam: "07.00",
+          ),
+          CardListMurid(
+            nama: "Alex",
+            jam: "07.00",
+          ),
+          CardListMurid(
+            nama: "Alex",
+            jam: "07.00",
+          ),
+          CardListMurid(
+            nama: "Alex",
+            jam: "07.00",
+          ),
+          CardListMurid(
+            nama: "Alex",
+            jam: "07.00",
+          ),
+          CardListMurid(
+            nama: "Alex",
+            jam: "07.00",
+          ),
         ],
       ),
     );
