@@ -182,7 +182,7 @@ class _DetailAbsenState extends State<DetailAbsen> {
                         padding: EdgeInsets.only(top: size.height * 0.01),
                         child: Container(
                           width: size.width * 0.85,
-                          height: size.height * 0.3,
+                          height: size.height * 0.125,
                           child: TextFormField(
                             minLines: 1,
                             maxLines: 5,
@@ -208,6 +208,116 @@ class _DetailAbsenState extends State<DetailAbsen> {
                           ),
                         ),
                       ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 15),
+                        child: Container(
+                          child: Text(
+                            "Student",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins'),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: size.height * 0.01),
+                        child: Container(
+                          width: size.width * 0.85,
+                          height: size.height * 0.12,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: formColor,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        width: size.width * 0.25,
+                                        height: size.height * 0.08,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: Colors.white),
+                                        child: Center(
+                                          child: Text(
+                                            "25",
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                color: secondaryColour),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        child: Text(
+                                          "on time",
+                                          style:
+                                              TextStyle(color: secondaryColour),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        width: size.width * 0.25,
+                                        height: size.height * 0.08,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: Colors.white),
+                                        child: Center(
+                                          child: Text(
+                                            "8",
+                                            style: TextStyle(
+                                                fontSize: 25, color: redColor),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        child: Text(
+                                          "late",
+                                          style: TextStyle(color: redColor),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        width: size.width * 0.25,
+                                        height: size.height * 0.08,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: Colors.white),
+                                        child: Center(
+                                          child: Text(
+                                            "4",
+                                            style: TextStyle(fontSize: 25),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        child: Text("other"),
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),
