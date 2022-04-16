@@ -1,8 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:absen_new/constants/color.dart';
+import 'package:absen_new/pages/murid/history_murid.dart';
+import 'package:absen_new/pages/murid/profile_murid.dart';
+import 'package:absen_new/pages/murid/scanned_qr.dart';
 import 'package:absen_new/widgets/guru/navbarguru.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class HomePageMurid extends StatefulWidget {
   const HomePageMurid({Key? key}) : super(key: key);
@@ -12,6 +16,21 @@ class HomePageMurid extends StatefulWidget {
 }
 
 class _HomePageMuridState extends State<HomePageMurid> {
+  String _data = "";
+
+  _scan() async {
+    await FlutterBarcodeScanner.scanBarcode(
+            "#000000", "cancel", true, ScanMode.QR)
+        .then(
+      (value) => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (c) => ScannedQr(value),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -62,98 +81,99 @@ class _HomePageMuridState extends State<HomePageMurid> {
               ),
             ),
             Container(
-                  height: size.height * 0.3,
-                  width: size.width * 0.9,
-                  child: Padding(
-                    padding: EdgeInsets.only(top: size.width * 0.02, left: size.width * 0.03),
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      color: mainColour,
-                      child: Column(
+              height: size.height * 0.3,
+              width: size.width * 0.9,
+              child: Padding(
+                padding: EdgeInsets.only(
+                    top: size.width * 0.02, left: size.width * 0.03),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  color: mainColour,
+                  child: Column(
+                    children: [
+                      Row(
                         children: [
-                          Row(
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: size.width * 0.03,
+                                top: size.width * 0.05),
+                            child: Text(
+                              "",
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: size.width * 0.5, top: size.width * 0.05),
+                            child: Text(
+                              "08.00",
+                              style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 45,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Column(
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsets.only(left: size.width * 0.03, top: size.width * 0.05),
+                                padding: EdgeInsets.only(
+                                    right: size.width * 0.15,
+                                    top: size.width * 0.2),
                                 child: Text(
-                                  "",
+                                  "Friday",
                                   style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                      fontFamily: 'Poppins',
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    EdgeInsets.only(left: size.width * 0.5, top: size.width * 0.05),
+                                padding: EdgeInsets.only(
+                                    left: size.width * 0.04,
+                                    top: size.width * 0.01),
                                 child: Text(
-                                  "08.00",
+                                  "22 April 2022",
                                   style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 45,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white
-                                  ),
+                                      fontFamily: 'Poppins',
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
                                 ),
                               ),
                             ],
                           ),
-                          Row(
-                            children: [
-                              Column(
-                                children: [
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.only(right: size.width * 0.15, top: size.width * 0.2),
-                                    child: Text(
-                                      "Friday",
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.only(left: size.width * 0.04, top: size.width * 0.01),
-                                    child: Text(
-                                      "22 April 2022",
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: size.width * 0.32,
+                                top: size.width * 0.05),
+                            child: Text(
+                              "",
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
                               ),
-                              Padding(
-                                padding:
-                                    EdgeInsets.only(left: size.width * 0.32, top: size.width * 0.05),
-                                child: Text(
-                                  "",
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )
+                            ),
+                          ),
                         ],
-                      ),
-                    ),
+                      )
+                    ],
                   ),
                 ),
-            
+              ),
+            ),
           ],
         ),
       ),
@@ -163,7 +183,7 @@ class _HomePageMuridState extends State<HomePageMurid> {
           child: FittedBox(
               child: FloatingActionButton(
                   backgroundColor: secondaryColour,
-                  onPressed: () {},
+                  onPressed: () => _scan(),
                   child: Icon(Icons.qr_code_scanner)))),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
@@ -176,39 +196,59 @@ class _HomePageMuridState extends State<HomePageMurid> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: size.width * 0.15, top: size.height * 0.005),
-                  child: Column(
-                    children: [
-                      Icon(
-                        Icons.person,
-                        size: 40,
-                        color: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (c) => ProfileMurid(),
                       ),
-                      Text("Profile",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white)),
-                    ],
+                    );
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        left: size.width * 0.15, top: size.height * 0.005),
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.person,
+                          size: 40,
+                          color: Colors.white,
+                        ),
+                        Text("Profile",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white)),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox.shrink(),
-                Padding(
-                  padding: EdgeInsets.only(
-                      right: size.width * 0.15, top: size.height * 0.005),
-                  child: Column(
-                    children: [
-                      Icon(
-                        Icons.history,
-                        size: 40,
-                        color: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (c) => HistoryMurid(),
                       ),
-                      Text("History",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white)),
-                    ],
+                    );
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        right: size.width * 0.15, top: size.height * 0.005),
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.history,
+                          size: 40,
+                          color: Colors.white,
+                        ),
+                        Text("History",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white)),
+                      ],
+                    ),
                   ),
                 ),
               ],

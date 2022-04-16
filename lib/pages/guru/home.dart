@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:absen_new/constants/color.dart';
+import 'package:absen_new/pages/guru/history_guru.dart';
+import 'package:absen_new/pages/guru/input_absen.dart';
+import 'package:absen_new/pages/guru/profile_guru.dart';
 import 'package:absen_new/widgets/guru/navbarguru.dart';
 import 'package:flutter/material.dart';
 
@@ -179,7 +182,14 @@ class _HomePageGuruState extends State<HomePageGuru> {
           child: FittedBox(
               child: FloatingActionButton(
                   backgroundColor: secondaryColour,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (c) => InputAbsenGuru(),
+                      ),
+                    );
+                  },
                   child: Icon(Icons.add)))),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
@@ -192,39 +202,59 @@ class _HomePageGuruState extends State<HomePageGuru> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: size.width * 0.15, top: size.height * 0.005),
-                  child: Column(
-                    children: [
-                      Icon(
-                        Icons.person,
-                        size: 40,
-                        color: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (c) => ProfileGuru(),
                       ),
-                      Text("Profile",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white)),
-                    ],
+                    );
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        left: size.width * 0.15, top: size.height * 0.005),
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.person,
+                          size: 40,
+                          color: Colors.white,
+                        ),
+                        Text("Profile",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white)),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox.shrink(),
-                Padding(
-                  padding: EdgeInsets.only(
-                      right: size.width * 0.15, top: size.height * 0.005),
-                  child: Column(
-                    children: [
-                      Icon(
-                        Icons.history,
-                        size: 40,
-                        color: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (c) => HistoryGuru(),
                       ),
-                      Text("History",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white)),
-                    ],
+                    );
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        right: size.width * 0.15, top: size.height * 0.005),
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.history,
+                          size: 40,
+                          color: Colors.white,
+                        ),
+                        Text("History",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white)),
+                      ],
+                    ),
                   ),
                 ),
               ],
