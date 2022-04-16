@@ -6,6 +6,7 @@ import 'package:absen_new/pages/guru/home.dart';
 import 'package:absen_new/pages/guru/input_absen.dart';
 import 'package:absen_new/pages/guru/profile_guru.dart';
 import 'package:absen_new/pages/murid/history_murid.dart';
+import 'package:absen_new/pages/murid/home_murid.dart';
 import 'package:absen_new/pages/murid/list_murid.dart';
 import 'package:absen_new/widgets/guru/navbarguru.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const HomePageGuru(),
+      home: const HomePageMurid(),
     );
   }
 }
