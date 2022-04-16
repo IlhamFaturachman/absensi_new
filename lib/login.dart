@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:absen_new/constants/color.dart';
+import 'package:absen_new/pages/guru/home.dart';
 import 'package:absen_new/pages/guru/input_absen.dart';
 import 'package:absen_new/pages/guru/profile_guru.dart';
+import 'package:absen_new/pages/murid/home_murid.dart';
 import 'package:absen_new/pages/murid/profile_murid.dart';
 import 'package:flutter/material.dart';
 
@@ -104,16 +106,16 @@ class _LoginPageState extends State<LoginPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (c) => ProfileGuru(),
+                                builder: (c) => HomePageGuru(),
                               ),
                             );
                           } else {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (c) => ProfileMurid(),
-                            //   ),
-                            // );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (c) => HomePageMurid(),
+                              ),
+                            );
                             
                           }
                         },
