@@ -46,11 +46,13 @@ class _HomePageMuridState extends State<HomePageMurid> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      //
+                      Route route = MaterialPageRoute(
+                          builder: (context) => ProfileMurid());
+                      Navigator.push(context, route);
                     },
                     child: Container(
                       height: size.height * 0.075,
-                      width: size.width * 0.1,
+                      width: size.width * 0.15,
                       child: Image(
                         image: AssetImage("assets/images/profpic.jpg"),
                         fit: BoxFit.cover,

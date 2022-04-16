@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:absen_new/pages/guru/home.dart';
 import 'package:absen_new/widgets/guru/form_input_absen.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +35,9 @@ class _InputAbsenGuruState extends State<InputAbsenGuru> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          //
+                          Route route = MaterialPageRoute(
+                              builder: (context) => HomePageGuru());
+                          Navigator.push(context, route);
                         },
                         child: Container(
                           child: Icon(
@@ -58,10 +61,11 @@ class _InputAbsenGuruState extends State<InputAbsenGuru> {
                 ),
               ),
               FormInputAbsen(
-                  judulcontroller: judulcontroller,
-                  tanggalcontroller: tanggalcontroller,
-                  jamawalcontroller: jamawalcontroller,
-                  jamakhircontroller: jamakhircontroller,)
+                judulcontroller: judulcontroller,
+                tanggalcontroller: tanggalcontroller,
+                jamawalcontroller: jamawalcontroller,
+                jamakhircontroller: jamakhircontroller,
+              )
             ],
           ),
         ),

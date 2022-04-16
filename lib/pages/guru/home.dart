@@ -3,6 +3,7 @@
 import 'package:absen_new/constants/color.dart';
 import 'package:absen_new/pages/guru/history_guru.dart';
 import 'package:absen_new/pages/guru/input_absen.dart';
+import 'package:absen_new/pages/guru/list_murid.dart';
 import 'package:absen_new/pages/guru/profile_guru.dart';
 import 'package:absen_new/widgets/guru/navbarguru.dart';
 import 'package:flutter/material.dart';
@@ -30,11 +31,13 @@ class _HomePageGuruState extends State<HomePageGuru> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      //
+                      Route route = MaterialPageRoute(
+                          builder: (context) => ProfileGuru());
+                      Navigator.push(context, route);
                     },
                     child: Container(
                       height: size.height * 0.075,
-                      width: size.width * 0.1,
+                      width: size.width * 0.15,
                       child: Image(
                         image: AssetImage("assets/images/profpic.jpg"),
                         fit: BoxFit.cover,
@@ -64,12 +67,55 @@ class _HomePageGuruState extends State<HomePageGuru> {
                 ),
               ),
             ),
-            
+            GestureDetector(
+              onTap: () {
+                Route route =
+                    MaterialPageRoute(builder: (context) => ListMurid());
+                Navigator.push(context, route);
+              },
+              child: Container(
+                height: size.height * 0.13,
+                width: size.width * 0.89,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                      top: size.width * 0.08, left: size.width * 0.03),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    color: mainColour,
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: size.width * 0.03),
+                          child: Text(
+                            "Pertemuan 1",
+                            style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: size.width * 0.5),
+                          child: Icon(
+                            Icons.keyboard_arrow_right,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
             Container(
-              height: size.height * 0.13,
+              height: size.height * 0.1,
               width: size.width * 0.89,
               child: Padding(
-                padding: EdgeInsets.only(top: size.width * 0.08, left: size.width * 0.03),
+                padding: EdgeInsets.only(
+                    top: size.width * 0.02, left: size.width * 0.03),
                 child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12.0),
@@ -82,11 +128,10 @@ class _HomePageGuruState extends State<HomePageGuru> {
                         child: Text(
                           "Pertemuan 1",
                           style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white
-                          ),
+                              fontFamily: 'Poppins',
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
                         ),
                       ),
                       Padding(
@@ -105,7 +150,8 @@ class _HomePageGuruState extends State<HomePageGuru> {
               height: size.height * 0.1,
               width: size.width * 0.89,
               child: Padding(
-                padding: EdgeInsets.only(top: size.width * 0.02, left: size.width * 0.03),
+                padding: EdgeInsets.only(
+                    top: size.width * 0.02, left: size.width * 0.03),
                 child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12.0),
@@ -118,47 +164,10 @@ class _HomePageGuruState extends State<HomePageGuru> {
                         child: Text(
                           "Pertemuan 1",
                           style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: size.width * 0.5),
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              height: size.height * 0.1,
-              width: size.width * 0.89,
-              child: Padding(
-                padding: EdgeInsets.only(top: size.width * 0.02, left: size.width * 0.03),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  color: mainColour,
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: size.width * 0.03),
-                        child: Text(
-                          "Pertemuan 1",
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white
-                          ),
+                              fontFamily: 'Poppins',
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
                         ),
                       ),
                       Padding(

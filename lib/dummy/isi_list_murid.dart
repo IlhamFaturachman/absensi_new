@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:absen_new/widgets/murid/card_list_murid.dart';
+import 'package:absen_new/widgets/guru/card_list_murid.dart';
 import 'package:flutter/material.dart';
 
 class IsiListMurid extends StatelessWidget {
@@ -12,6 +12,7 @@ class IsiListMurid extends StatelessWidget {
       child: Column(
         // ignore: prefer_const_literals_to_create_immutables
         children: [
+          
           CardListMurid(
             nama: "Alex",
             jam: "07.00",
@@ -56,6 +57,10 @@ class IsiListMurid extends StatelessWidget {
             nama: "Alex",
             jam: "07.00",
           ),
+          CardListMuridRed(nama: "Upin", jam: "08.00"),
+          CardListMuridRed(nama: "Upin", jam: "08.00"),
+          CardListMuridAbu(nama: "Upin", jam: "08.00"),
+          CardListMuridAbu(nama: "Upin", jam: "08.00"),
         ],
       ),
     );

@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   Text(
                     "Welcome To ngabsen!",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: size.height * 0.04),
@@ -64,7 +64,9 @@ class _LoginPageState extends State<LoginPage> {
                           fillColor: formColor,
                           filled: true,
                           hintText: 'username',
-                          hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                          hintStyle: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
@@ -87,7 +89,9 @@ class _LoginPageState extends State<LoginPage> {
                           fillColor: formColor,
                           filled: true,
                           hintText: 'password',
-                          hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                          hintStyle: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
@@ -95,8 +99,8 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding: EdgeInsets.only(top: size.height * 0.1),
                     child: Container(
-                      height: size.height * 0.065,
-                      width: size.width * 0.35,
+                      height: size.height * 0.06,
+                      width: size.width * 0.3,
                       decoration: BoxDecoration(
                           color: mainColour,
                           borderRadius: BorderRadius.circular(10)),
@@ -122,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Text(
                           "LOGIN",
                           style: TextStyle(
-                              fontSize: 25,
+                              fontSize: 20,
                               color: Colors.white,
                               fontFamily: 'Poppins'),
                         ),

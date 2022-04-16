@@ -2,9 +2,10 @@
 
 import 'package:absen_new/constants/color.dart';
 import 'package:absen_new/dummy/isi_list_murid.dart';
+import 'package:absen_new/pages/guru/home.dart';
 import 'package:absen_new/pages/guru/input_absen.dart';
 import 'package:absen_new/widgets/guru/navbarguru.dart';
-import 'package:absen_new/widgets/murid/card_list_murid.dart';
+import 'package:absen_new/widgets/guru/card_list_murid.dart';
 import 'package:flutter/material.dart';
 
 class ListMurid extends StatefulWidget {
@@ -19,14 +20,14 @@ class _ListMurid extends State<ListMurid> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: SingleChildScrollView(
+      body: Center(
         child: Container(
           child: Column(
             children: [
               GestureDetector(
                 onTap: () {
                   Route route =
-                      MaterialPageRoute(builder: (context) => InputAbsenGuru());
+                      MaterialPageRoute(builder: (context) => HomePageGuru());
                   Navigator.push(context, route);
                 },
                 child: Row(
@@ -35,31 +36,36 @@ class _ListMurid extends State<ListMurid> {
                     Padding(
                       padding: EdgeInsets.only(
                         left: size.width * 0.045,
-                        top: size.height * 0.08,
+                        top: size.height * 0.05,
+                        bottom: size.height * 0.01
                       ),
                       child: Icon(
                         Icons.arrow_back,
-                        size: 50,
+                        size: 40,
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                          left: size.width * 0.04, top: size.height * 0.08),
+                          left: size.width * 0.04, top: size.height * 0.05, bottom: size.height * 0.01),
                       child: Container(
                         child: Text(
                           "Student List",
                           style: TextStyle(
-                              fontSize: 33, fontWeight: FontWeight.bold),
+                              fontSize: 30, fontWeight: FontWeight.bold),
                         ),
                       ),
                     )
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                    top: size.height * 0.03, left: size.width * 0.08),
-                child: IsiListMurid(),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        top: size.height * 0, left: size.width * 0.08, bottom: size.height * 0.05),
+                    child: IsiListMurid(),
+                  ),
+                ),
               ),
             ],
           ),

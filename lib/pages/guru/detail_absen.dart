@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_typing_uninitialized_variables
 
 import 'package:absen_new/constants/color.dart';
+import 'package:absen_new/pages/guru/list_murid.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -92,7 +93,7 @@ class _DetailAbsenState extends State<DetailAbsen> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(0),
+                padding: EdgeInsets.only(left: 30),
                 child: Center(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -208,17 +209,40 @@ class _DetailAbsenState extends State<DetailAbsen> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 15),
-                        child: Container(
-                          child: Text(
-                            "Student",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Poppins'),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 15),
+                            child: Container(
+                              child: Text(
+                                "Student",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Poppins'),
+                              ),
+                            ),
                           ),
-                        ),
+                          GestureDetector(
+                            onTap: () {
+                              Route route = MaterialPageRoute(
+                                  builder: (context) => ListMurid());
+                              Navigator.push(context, route);
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.only(top: 15, left: 228),
+                              child: Container(
+                                child: Text(
+                                  "see all",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: 'Poppins'),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: size.height * 0.01),

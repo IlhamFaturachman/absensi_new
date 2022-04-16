@@ -1,19 +1,5 @@
 
 import 'package:absen_new/login.dart';
-import 'package:absen_new/pages/guru/home.dart';
-
-import 'package:absen_new/pages/murid/scanned_qr.dart';
-import 'package:absen_new/widgets/murid/scanner.dart';
-
-import 'package:absen_new/pages/guru/history_guru.dart';
-
-import 'package:absen_new/pages/guru/home.dart';
-import 'package:absen_new/pages/guru/input_absen.dart';
-import 'package:absen_new/pages/guru/profile_guru.dart';
-import 'package:absen_new/pages/murid/history_murid.dart';
-import 'package:absen_new/pages/murid/home_murid.dart';
-import 'package:absen_new/pages/murid/list_murid.dart';
-import 'package:absen_new/widgets/guru/navbarguru.dart';
 import 'package:flutter/material.dart';
 
 void main() {

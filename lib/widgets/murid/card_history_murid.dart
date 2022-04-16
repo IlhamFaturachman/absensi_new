@@ -52,7 +52,7 @@ class _CardHistoryMurid extends State<CardHistoryMurid> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.0),
                       ),
-                      color: formColor,
+                      color: listColor,
                       child: Column(
                         children: [
                           Row(

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:absen_new/pages/murid/home_murid.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/color.dart';
@@ -31,7 +32,9 @@ class _ProfileMuridState extends State<ProfileMurid> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          //
+                          Route route = MaterialPageRoute(
+                              builder: (context) => HomePageMurid());
+                          Navigator.push(context, route);
                         },
                         child: Container(
                           child: Icon(

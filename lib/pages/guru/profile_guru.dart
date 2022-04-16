@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:absen_new/constants/color.dart';
+import 'package:absen_new/pages/guru/home.dart';
 import 'package:flutter/material.dart';
 
 class ProfileGuru extends StatefulWidget {
@@ -30,7 +31,9 @@ class _ProfileGuruState extends State<ProfileGuru> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          //
+                          Route route = MaterialPageRoute(
+                              builder: (context) => HomePageGuru());
+                          Navigator.push(context, route);
                         },
                         child: Container(
                           child: Icon(
