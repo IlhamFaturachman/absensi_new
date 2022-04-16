@@ -34,6 +34,7 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
   final classItems = ['X RPL A', 'XI RPL A', 'XII RPL A', 'XII ANIM A'];
   String? subjectValue;
   String? classValue;
+  DateTime? _dateTime;
 
   @override
   Widget build(BuildContext context) {
@@ -191,35 +192,43 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                     padding: EdgeInsets.only(top: size.height * 0.01),
                     child: Container(
                       width: size.width * 0.85,
-                      height: size.height * 0.075,
-                      child: TextFormField(
-                        controller: widget.tanggalcontroller,
-                        decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(color: formColor),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(color: Colors.white)),
-                          fillColor: formColor,
-                          filled: true,
-                          hintText: 'Pertemuan 1',
-                          hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                      height: size.height * 0.07,
+                      child: RaisedButton(
+                        color: formColor,
+                        child: Container(
+                          child: Text(
+                            
+                            _dateTime == null
+                              ? 'Select Date'
+                              : _dateTime.toString(),
+                              textAlign:TextAlign.justify,
+                              ),
+                              
                         ),
+                        onPressed: () {
+                          showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(2000),
+                            lastDate: DateTime(2099),
+                          ).then((date) {
+                            //tambahkan setState dan panggil variabel _dateTime.
+                            setState(() {
+                              _dateTime = date;
+                            });
+                          });
+                        },
                       ),
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: size.height * 0.015),
-                    child: Container(
-                      child: Text(
-                        "Schedule Time",
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Poppins'),
-                      ),
+                    child: Text(
+                      "Schedule Time",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Poppins'),
                     ),
                   ),
                   Padding(
