@@ -16,11 +16,12 @@ class _HomePageGuruState extends State<HomePageGuru> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(left: size.width * 0.1),
+              padding: EdgeInsets.only(
+                  left: size.width * 0.08, top: size.height * 0.03),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -29,8 +30,8 @@ class _HomePageGuruState extends State<HomePageGuru> {
                       //
                     },
                     child: Container(
-                      height: size.height * 0.1,
-                      width: size.width * 0.15,
+                      height: size.height * 0.075,
+                      width: size.width * 0.1,
                       child: Image(
                         image: AssetImage("assets/images/profpic.jpg"),
                         fit: BoxFit.cover,
@@ -51,19 +52,130 @@ class _HomePageGuruState extends State<HomePageGuru> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(),
+              padding: EdgeInsets.only(
+                  right: size.width * 0.3, top: size.height * 0.02),
               child: Container(
                 child: Text(
-                  "Your Schedule"
+                  "your schedule",
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                 ),
               ),
-            )
+            ),
+            
+            Container(
+              height: size.height * 0.13,
+              width: size.width * 0.89,
+              child: Padding(
+                padding: EdgeInsets.only(top: size.width * 0.08, left: size.width * 0.03),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  color: mainColour,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: size.width * 0.03),
+                        child: Text(
+                          "Pertemuan 1",
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: size.width * 0.5),
+                        child: Icon(
+                          Icons.keyboard_arrow_right,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              height: size.height * 0.1,
+              width: size.width * 0.89,
+              child: Padding(
+                padding: EdgeInsets.only(top: size.width * 0.02, left: size.width * 0.03),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  color: mainColour,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: size.width * 0.03),
+                        child: Text(
+                          "Pertemuan 1",
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: size.width * 0.5),
+                        child: Icon(
+                          Icons.keyboard_arrow_right,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              height: size.height * 0.1,
+              width: size.width * 0.89,
+              child: Padding(
+                padding: EdgeInsets.only(top: size.width * 0.02, left: size.width * 0.03),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  color: mainColour,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: size.width * 0.03),
+                        child: Text(
+                          "Pertemuan 1",
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: size.width * 0.5),
+                        child: Icon(
+                          Icons.keyboard_arrow_right,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
-      floatingActionButton: Container(
-          width: size.width * 0.25,
-          height: size.height * 0.1,
+      floatingActionButton: SizedBox(
+          width: 80,
+          height: 80,
           child: FittedBox(
               child: FloatingActionButton(
                   backgroundColor: secondaryColour,
@@ -108,7 +220,7 @@ class _HomePageGuruState extends State<HomePageGuru> {
                         size: 40,
                         color: Colors.white,
                       ),
-                      Text("Profile",
+                      Text("History",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.white)),
