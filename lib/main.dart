@@ -1,7 +1,13 @@
 
 import 'package:absen_new/login.dart';
+import 'package:absen_new/pages/guru/home.dart';
+
+import 'package:absen_new/pages/murid/scanned_qr.dart';
+import 'package:absen_new/widgets/murid/scanner.dart';
+
 import 'package:absen_new/pages/guru/history_guru.dart';
 
+<<<<<<< HEAD
 import 'package:absen_new/pages/guru/home.dart';
 import 'package:absen_new/pages/guru/input_absen.dart';
 import 'package:absen_new/pages/guru/profile_guru.dart';
@@ -9,6 +15,9 @@ import 'package:absen_new/pages/murid/history_murid.dart';
 import 'package:absen_new/pages/murid/home_murid.dart';
 import 'package:absen_new/pages/murid/list_murid.dart';
 import 'package:absen_new/widgets/guru/navbarguru.dart';
+=======
+
+>>>>>>> 3db18d0a7ca81eaccddba4439af2664a7341fb00
 import 'package:flutter/material.dart';
 
 void main() {
@@ -36,7 +45,14 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
+<<<<<<< HEAD
       home: const HomePageMurid(),
+=======
+
+
+      home: const HomePageGuru(),
+
+>>>>>>> 3db18d0a7ca81eaccddba4439af2664a7341fb00
     );
   }
 }
