@@ -16,69 +16,80 @@ class _ProfileMuridState extends State<ProfileMurid> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final mediaQueryHeight = MediaQuery.of(context).size.height;
+    final mediaQueryWidth = MediaQuery.of(context).size.width;
+    final bodyWidth = mediaQueryWidth;
+    final bodyHeight = mediaQueryHeight - MediaQuery.of(context).padding.top;
+
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          height: size.height,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(
-                    size.width * 0.045, size.height * 0.05, 0, 0),
-                child: Container(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Route route = MaterialPageRoute(
-                              builder: (context) => HomePageMurid());
-                          Navigator.push(context, route);
-                        },
-                        child: Container(
-                          child: Icon(
-                            Icons.arrow_back,
-                            size: 40,
-                          ),
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(
+                  size.width * 0.045, size.height * 0.02, 0, 0),
+              child: Container(
+                height: bodyHeight * 0.1,
+                width: bodyWidth,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Route route = MaterialPageRoute(
+                            builder: (context) => HomePageMurid());
+                        Navigator.push(context, route);
+                      },
+                      child: Container(
+                        child: Icon(
+                          Icons.arrow_back,
+                          size: bodyHeight * 0.05,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(left: size.width * 0.04),
-                        child: Container(
-                          child: Text(
-                            "Profile",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Center(
-                child: Padding(
-                  padding: EdgeInsets.only(top: size.height * 0.015),
-                  child: Container(
-                    height: size.height * 0.2,
-                    width: size.width * 0.25,
-                    child: Image(
-                      image: AssetImage("assets/images/profile.jpg"),
-                      fit: BoxFit.cover,
                     ),
+                    Padding(
+                      padding: EdgeInsets.only(left: size.width * 0.04),
+                      child: Container(
+                        child: Text(
+                          "Profile",
+                          style: TextStyle(
+                              fontSize: bodyWidth * 0.07,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: EdgeInsets.only(top: size.height * 0.0),
+                child: Container(
+                  height: bodyHeight * 0.2,
+                  width: bodyWidth * 0.25,
+                  child: Image(
+                    image: AssetImage("assets/images/profile.jpg"),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              Center(
+            ),
+            Container(
+              height: bodyHeight * 0.7,
+              width: bodyWidth,
+              child: Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
+                      width: bodyWidth * 0.85,
+                      height: bodyHeight * 0.03,
                       child: Text(
                         "NIP",
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: bodyWidth * 0.05,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Poppins'),
                       ),
@@ -86,8 +97,8 @@ class _ProfileMuridState extends State<ProfileMurid> {
                     Padding(
                       padding: EdgeInsets.only(top: size.height * 0.01),
                       child: Container(
-                        width: size.width * 0.85,
-                        height: size.height * 0.075,
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.075,
                         child: TextFormField(
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
@@ -107,10 +118,12 @@ class _ProfileMuridState extends State<ProfileMurid> {
                     Padding(
                       padding: EdgeInsets.only(top: size.height * 0.02),
                       child: Container(
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.03,
                         child: Text(
                           "Full Name",
                           style: TextStyle(
-                              fontSize: 20,
+                              fontSize: bodyWidth * 0.05,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Poppins'),
                         ),
@@ -119,8 +132,8 @@ class _ProfileMuridState extends State<ProfileMurid> {
                     Padding(
                       padding: EdgeInsets.only(top: size.height * 0.01),
                       child: Container(
-                        width: size.width * 0.85,
-                        height: size.height * 0.075,
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.075,
                         child: TextFormField(
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
@@ -140,10 +153,12 @@ class _ProfileMuridState extends State<ProfileMurid> {
                     Padding(
                       padding: EdgeInsets.only(top: size.height * 0.02),
                       child: Container(
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.03,
                         child: Text(
                           "Class",
                           style: TextStyle(
-                              fontSize: 20,
+                              fontSize: bodyWidth * 0.05,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Poppins'),
                         ),
@@ -152,8 +167,8 @@ class _ProfileMuridState extends State<ProfileMurid> {
                     Padding(
                       padding: EdgeInsets.only(top: size.height * 0.01),
                       child: Container(
-                        width: size.width * 0.85,
-                        height: size.height * 0.075,
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.075,
                         child: TextFormField(
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
@@ -173,10 +188,12 @@ class _ProfileMuridState extends State<ProfileMurid> {
                     Padding(
                       padding: EdgeInsets.only(top: size.height * 0.02),
                       child: Container(
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.03,
                         child: Text(
                           "Attendance Number",
                           style: TextStyle(
-                              fontSize: 20,
+                              fontSize: bodyWidth * 0.05,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Poppins'),
                         ),
@@ -185,8 +202,8 @@ class _ProfileMuridState extends State<ProfileMurid> {
                     Padding(
                       padding: EdgeInsets.only(top: size.height * 0.01),
                       child: Container(
-                        width: size.width * 0.85,
-                        height: size.height * 0.075,
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.075,
                         child: TextFormField(
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
@@ -206,10 +223,12 @@ class _ProfileMuridState extends State<ProfileMurid> {
                     Padding(
                       padding: EdgeInsets.only(top: size.height * 0.02),
                       child: Container(
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.03,
                         child: Text(
                           "Phone",
                           style: TextStyle(
-                              fontSize: 20,
+                              fontSize: bodyWidth * 0.05,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Poppins'),
                         ),
@@ -218,8 +237,8 @@ class _ProfileMuridState extends State<ProfileMurid> {
                     Padding(
                       padding: EdgeInsets.only(top: size.height * 0.01),
                       child: Container(
-                        width: size.width * 0.85,
-                        height: size.height * 0.075,
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.075,
                         child: TextFormField(
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
@@ -239,8 +258,8 @@ class _ProfileMuridState extends State<ProfileMurid> {
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
