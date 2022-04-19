@@ -69,7 +69,7 @@ class _HistoryMurid extends State<HistoryMurid> {
                   child: SingleChildScrollView(
                     child: Padding(
                       padding: EdgeInsets.only(
-                          top: size.height * 0.0, left: size.width * 0.08, bottom: size.height * 0.02),
+                          top: size.height * 0.0, left: size.width * 0.08, bottom: size.height * 0.0),
                       child: IsiHistoryMurid(),
                     ),
                   ),

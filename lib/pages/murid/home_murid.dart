@@ -59,7 +59,7 @@ class _HomePageMuridState extends State<HomePageMurid> {
                         Navigator.push(context, route);
                       },
                       child: Container(
-                        height: bodyHeight * 0.075,
+                        height: bodyHeight * 0.08,
                         width: bodyWidth * 0.15,
                         child: Image(
                           image: AssetImage("assets/images/profpic.jpg"),
@@ -96,27 +96,95 @@ class _HomePageMuridState extends State<HomePageMurid> {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                  top: size.width * 0.0, left: size.width * 0.03),
-              child: Container(
-                height: bodyHeight * 0.31,
-              width: bodyWidth * 0.9,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  color: mainColour,
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(
-                                left: size.width * 0.03,
-                                top: size.width * 0.05),
-                            child: Container(
-                              height: bodyHeight * 0.05,
+            SingleChildScrollView(
+              child: Center(
+                child: Container(
+                  height: bodyHeight * 0.33,
+                width: bodyWidth * 0.9,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    color: mainColour,
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left: size.width * 0.03,
+                                  top: size.width * 0.05),
+                              child: Container(
+                                height: bodyHeight * 0.05,
+                                child: Text(
+                                  "",
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: bodyWidth * 0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left: size.width * 0.5, top: size.width * 0.05),
+                              child: Container(
+                                height: bodyHeight * 0.068,
+                                child: Text(
+                                  "08.00",
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: bodyWidth * 0.115,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      right: size.width * 0.16,
+                                      top: size.width * 0.15),
+                                  child: Container(
+                                    height: bodyHeight * 0.053,
+                                    child: Text(
+                                      "Friday",
+                                      style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: bodyWidth * 0.075,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: size.width * 0.04,
+                                      top: size.width * 0.0),
+                                  child: Container(
+                                    height: bodyHeight * 0.053,
+                                    child: Text(
+                                      "22 April 2022",
+                                      style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: bodyWidth * 0.075,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left: size.width * 0.32,
+                                  top: size.width * 0.05),
                               child: Text(
                                 "",
                                 style: TextStyle(
@@ -126,78 +194,10 @@ class _HomePageMuridState extends State<HomePageMurid> {
                                 ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                                left: size.width * 0.5, top: size.width * 0.05),
-                            child: Container(
-                              height: bodyHeight * 0.065,
-                              child: Text(
-                                "08.00",
-                                style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: bodyWidth * 0.115,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Column(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    right: size.width * 0.16,
-                                    top: size.width * 0.15),
-                                child: Container(
-                                  height: bodyHeight * 0.05,
-                                  child: Text(
-                                    "Friday",
-                                    style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: bodyWidth * 0.075,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    left: size.width * 0.04,
-                                    top: size.width * 0.0),
-                                child: Container(
-                                  height: bodyHeight * 0.05,
-                                  child: Text(
-                                    "22 April 2022",
-                                    style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: bodyWidth * 0.075,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                                left: size.width * 0.32,
-                                top: size.width * 0.05),
-                            child: Text(
-                              "",
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: bodyWidth * 0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),

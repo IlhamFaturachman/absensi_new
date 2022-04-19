@@ -15,15 +15,21 @@ class _ScannedQrState extends State<ScannedQr> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final mediaQueryHeight = MediaQuery.of(context).size.height;
+    final mediaQueryWidth = MediaQuery.of(context).size.width;
+    final bodyWidth = mediaQueryWidth;
+    final bodyHeight = mediaQueryHeight - MediaQuery.of(context).padding.top;
+
     return Scaffold(
-      body: Container(
-        color: Colors.white,
+      body: Center(
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: size.height * 0.1, left: 10),
+              padding: EdgeInsets.only(top: size.height * 0.03, left: 10),
               child: Center(
                 child: Container(
+                  height: bodyHeight * 0.1,
+                  width: bodyWidth * 1,
                   child: Row(
                     children: [
                       GestureDetector(
@@ -31,8 +37,8 @@ class _ScannedQrState extends State<ScannedQr> {
                           //
                         },
                         child: Container(
-                          height: size.height * 0.09,
-                          width: size.width * 0.15,
+                          height: bodyHeight * 0.08,
+                          width: bodyWidth * 0.15,
                           child: Image(
                             image: AssetImage("assets/images/scanned.jpg"),
                             fit: BoxFit.cover,
@@ -42,10 +48,12 @@ class _ScannedQrState extends State<ScannedQr> {
                       Padding(
                         padding: EdgeInsets.only(left: size.width * 0.04),
                         child: Container(
+                          height: bodyHeight * 0.05,
+                          width: bodyWidth * 0.7,
                           child: Text(
                             "Hi, Achmad Rizqi Taqiyudin",
                             style: TextStyle(
-                                fontSize: 23, fontWeight: FontWeight.bold),
+                                fontSize: bodyWidth * 0.05, fontWeight: FontWeight.bold),
                           ),
                         ),
                       )
@@ -55,19 +63,21 @@ class _ScannedQrState extends State<ScannedQr> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: size.height * 0.17),
+              padding: EdgeInsets.only(top: size.height * 0.05),
               child: Container(
+                height: bodyHeight * 0.05,
+                width: bodyWidth * 0.55,
                 child: Text(
                   "Succesfully Attend!",
-                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: bodyWidth * 0.06, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 10),
               child: Container(
-                width: size.width * 0.7,
-                height: size.height * 0.4,
+                width: bodyWidth * 0.7,
+                height: bodyHeight * 0.4,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: mainColour,
@@ -77,24 +87,28 @@ class _ScannedQrState extends State<ScannedQr> {
                     Padding(
                       padding: EdgeInsets.only(top: size.height * 0.04),
                       child: Container(
-                        width: 100,
-                        height: 100,
+                        width: bodyHeight * 0.15,
+                        height: bodyHeight * 0.15,
                         decoration: BoxDecoration(
                             color: secondaryColour,
                             borderRadius: BorderRadius.circular(100)),
                         child: Icon(
                           Icons.check_rounded,
                           color: Colors.white,
-                          size: 100,
+                          size: bodyHeight * 0.15,
                         ),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 10),
+                      padding: EdgeInsets.only(top: 5),
                       child: Container(
-                        child: Text(
-                          widget.Value,
-                          style: TextStyle(color: Colors.white, fontSize: 23),
+                        height: bodyHeight * 0.15,
+                        width: bodyWidth * 0.5,
+                        child: Center(
+                          child: Text(
+                            widget.Value,
+                            style: TextStyle(color: Colors.white, fontSize: 23),
+                          ),
                         ),
                       ),
                     )
