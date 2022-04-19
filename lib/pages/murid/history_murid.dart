@@ -41,10 +41,9 @@ class _HistoryMurid extends State<HistoryMurid> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(
-                          left: size.width * 0.045,
-                          top: size.height * 0.05,
-                          bottom: size.height * 0.01
-                        ),
+                            left: size.width * 0.045,
+                            top: size.height * 0.05,
+                            bottom: size.height * 0.01),
                         child: Icon(
                           Icons.arrow_back,
                           size: bodyHeight * 0.05,
@@ -52,11 +51,18 @@ class _HistoryMurid extends State<HistoryMurid> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                            left: size.width * 0.04, top: size.height * 0.04, bottom: size.height * 0.0),
-                        child: Text(
-                          "History",
-                          style: TextStyle(
-                              fontSize: bodyWidth * 0.08, fontWeight: FontWeight.bold),
+                            left: size.width * 0.04,
+                            top: size.height * 0.04,
+                            bottom: size.height * 0.0),
+                        child: Container(
+                          height: bodyHeight * 0.06,
+                          width: bodyWidth * 0.8,
+                          child: Text(
+                            "History",
+                            style: TextStyle(
+                                fontSize: bodyWidth * 0.07,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       )
                     ],
@@ -65,11 +71,14 @@ class _HistoryMurid extends State<HistoryMurid> {
               ),
               Container(
                 height: bodyHeight * 0.9,
+                width: bodyWidth,
                 child: Expanded(
                   child: SingleChildScrollView(
                     child: Padding(
                       padding: EdgeInsets.only(
-                          top: size.height * 0.0, left: size.width * 0.08, bottom: size.height * 0.0),
+                          top: size.height * 0.0,
+                          left: size.width * 0.08,
+                          bottom: size.height * 0.0),
                       child: IsiHistoryMurid(),
                     ),
                   ),

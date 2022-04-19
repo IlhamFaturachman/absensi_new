@@ -17,6 +17,11 @@ class _CardListMurid extends State<CardListMurid> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final mediaQueryHeight = MediaQuery.of(context).size.height;
+    final mediaQueryWidth = MediaQuery.of(context).size.width;
+    final bodyWidth = mediaQueryWidth;
+    final bodyHeight = mediaQueryHeight - MediaQuery.of(context).padding.top;
+
     return Container(
       child: Column(
         children: [
@@ -26,7 +31,7 @@ class _CardListMurid extends State<CardListMurid> {
             child: Stack(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: size.height * 0.0055),
+                  padding: EdgeInsets.only(top: size.height * 0.006),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
@@ -34,13 +39,13 @@ class _CardListMurid extends State<CardListMurid> {
                           topLeft: Radius.circular(10)),
                       color: secondaryColour,
                     ),
-                    height: size.height * 0.07,
-                    width: size.width * 0.1,
+                    height: bodyHeight * 0.069,
+                    width: bodyWidth * 0.1,
                   ),
                 ),
                 Container(
-                  height: size.height * 0.08,
-                  width: size.width * 0.8,
+                  height: bodyHeight * 0.08,
+                  width: bodyWidth * 0.8,
                   child: Padding(
                     padding: EdgeInsets.only(top: 1, left: 10),
                     child: Card(
@@ -51,24 +56,36 @@ class _CardListMurid extends State<CardListMurid> {
                       child: Row(
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(left: size.width * 0.03),
-                            child: Text(
-                              widget.nama,
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                            padding: EdgeInsets.only(
+                                left: size.width * 0.03,
+                                top: size.width * 0.02),
+                            child: Container(
+                              height: bodyHeight * 0.04,
+                              width: bodyWidth * 0.5,
+                              child: Text(
+                                widget.nama,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: bodyWidth * 0.045,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: size.width * 0.5),
-                            child: Text(
-                              widget.jam,
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                            padding: EdgeInsets.only(
+                                left: size.width * 0.04,
+                                top: size.width * 0.02),
+                            child: Container(
+                              height: bodyHeight * 0.04,
+                              width: bodyWidth * 0.13,
+                              child: Text(
+                                widget.jam,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: bodyWidth * 0.045,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
@@ -80,13 +97,11 @@ class _CardListMurid extends State<CardListMurid> {
               ],
             ),
           ),
-          
         ],
       ),
     );
   }
 }
-
 
 class CardListMuridRed extends StatefulWidget {
   const CardListMuridRed({Key? key, required this.nama, required this.jam})
@@ -98,11 +113,15 @@ class CardListMuridRed extends StatefulWidget {
   State<CardListMuridRed> createState() => _CardListMuridRed();
 }
 
-
 class _CardListMuridRed extends State<CardListMuridRed> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final mediaQueryHeight = MediaQuery.of(context).size.height;
+    final mediaQueryWidth = MediaQuery.of(context).size.width;
+    final bodyWidth = mediaQueryWidth;
+    final bodyHeight = mediaQueryHeight - MediaQuery.of(context).padding.top;
+
     return Container(
       child: Column(
         children: [
@@ -112,21 +131,21 @@ class _CardListMuridRed extends State<CardListMuridRed> {
             child: Stack(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: size.height * 0.0055),
+                  padding: EdgeInsets.only(top: size.height * 0.0068),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(10),
                           topLeft: Radius.circular(10)),
-                      color: Colors.red,
+                      color: redColor,
                     ),
-                    height: size.height * 0.07,
-                    width: size.width * 0.1,
+                    height: bodyHeight * 0.067,
+                    width: bodyWidth * 0.1,
                   ),
                 ),
                 Container(
-                  height: size.height * 0.08,
-                  width: size.width * 0.8,
+                  height: bodyHeight * 0.08,
+                  width: bodyWidth * 0.8,
                   child: Padding(
                     padding: EdgeInsets.only(top: 1, left: 10),
                     child: Card(
@@ -134,28 +153,39 @@ class _CardListMuridRed extends State<CardListMuridRed> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       color: listColor,
-                      
                       child: Row(
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(left: size.width * 0.03),
-                            child: Text(
-                              widget.nama,
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                            padding: EdgeInsets.only(
+                                left: size.width * 0.03,
+                                top: size.width * 0.02),
+                            child: Container(
+                              height: bodyHeight * 0.04,
+                              width: bodyWidth * 0.25,
+                              child: Text(
+                                widget.nama,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: bodyWidth * 0.045,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: size.width * 0.25, right: size.width * 0.03),
-                            child: Text(
-                              widget.jam,
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                            padding: EdgeInsets.only(
+                                left: size.width * 0.05,
+                                top: size.width * 0.02),
+                            child: Container(
+                              height: bodyHeight * 0.04,
+                              width: bodyWidth * 0.13,
+                              child: Text(
+                                widget.jam,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: bodyWidth * 0.045,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
@@ -165,16 +195,16 @@ class _CardListMuridRed extends State<CardListMuridRed> {
                               child: Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10.0),
-                                color: formColor,
+                                  color: formColor,
                                 ),
-                                width: 100,
-                                height: 20,
+                                width: bodyWidth * 0.27,
+                                height: bodyHeight * 0.03,
                                 child: Center(
                                   child: Text(
                                     "change to other",
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
-                                      fontSize: 16,
+                                      fontSize: bodyWidth * 0.035,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -190,13 +220,11 @@ class _CardListMuridRed extends State<CardListMuridRed> {
               ],
             ),
           ),
-          
         ],
       ),
     );
   }
 }
-
 
 class CardListMuridAbu extends StatefulWidget {
   const CardListMuridAbu({Key? key, required this.nama, required this.jam})
@@ -208,11 +236,15 @@ class CardListMuridAbu extends StatefulWidget {
   State<CardListMuridAbu> createState() => _CardListMuridAbu();
 }
 
-
 class _CardListMuridAbu extends State<CardListMuridAbu> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final mediaQueryHeight = MediaQuery.of(context).size.height;
+    final mediaQueryWidth = MediaQuery.of(context).size.width;
+    final bodyWidth = mediaQueryWidth;
+    final bodyHeight = mediaQueryHeight - MediaQuery.of(context).padding.top;
+
     return Container(
       child: Column(
         children: [
@@ -222,7 +254,7 @@ class _CardListMuridAbu extends State<CardListMuridAbu> {
             child: Stack(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: size.height * 0.0055),
+                  padding: EdgeInsets.only(top: size.height * 0.006),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
@@ -230,13 +262,13 @@ class _CardListMuridAbu extends State<CardListMuridAbu> {
                           topLeft: Radius.circular(10)),
                       color: formColor,
                     ),
-                    height: size.height * 0.07,
-                    width: size.width * 0.1,
+                    height: bodyHeight * 0.069,
+                    width: bodyWidth * 0.1,
                   ),
                 ),
                 Container(
-                  height: size.height * 0.08,
-                  width: size.width * 0.8,
+                  height: bodyHeight * 0.08,
+                  width: bodyWidth * 0.8,
                   child: Padding(
                     padding: EdgeInsets.only(top: 1, left: 10),
                     child: Card(
@@ -244,32 +276,42 @@ class _CardListMuridAbu extends State<CardListMuridAbu> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       color: listColor,
-                      
                       child: Row(
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(left: size.width * 0.03),
-                            child: Text(
-                              widget.nama,
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                            padding: EdgeInsets.only(
+                                left: size.width * 0.03,
+                                top: size.width * 0.02),
+                            child: Container(
+                              height: bodyHeight * 0.04,
+                              width: bodyWidth * 0.5,
+                              child: Text(
+                                widget.nama,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: bodyWidth * 0.045,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: size.width * 0.5),
-                            child: Text(
-                              widget.jam,
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                            padding: EdgeInsets.only(
+                                left: size.width * 0.05,
+                                top: size.width * 0.02),
+                            child: Container(
+                              height: bodyHeight * 0.04,
+                              width: bodyWidth * 0.13,
+                              child: Text(
+                                widget.jam,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: bodyWidth * 0.045,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
-                          
                         ],
                       ),
                     ),
@@ -278,10 +320,8 @@ class _CardListMuridAbu extends State<CardListMuridAbu> {
               ],
             ),
           ),
-          
         ],
       ),
     );
   }
 }
-

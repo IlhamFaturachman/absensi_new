@@ -14,15 +14,15 @@ class IsiListMurid extends StatelessWidget {
         children: [
           
           CardListMurid(
-            nama: "Alex",
+            nama: "ronnyy",
             jam: "07.00",
           ),
           CardListMurid(
-            nama: "Alex",
+            nama: "papi",
             jam: "07.00",
           ),
           CardListMurid(
-            nama: "Alex",
+            nama: "gaga",
             jam: "07.00",
           ),
           CardListMurid(

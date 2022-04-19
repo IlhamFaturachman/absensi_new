@@ -51,6 +51,8 @@ class _ProfileMuridState extends State<ProfileMurid> {
                     Padding(
                       padding: EdgeInsets.only(left: size.width * 0.04),
                       child: Container(
+                        height: bodyHeight * 0.043,
+                        width: bodyWidth * 0.8,
                         child: Text(
                           "Profile",
                           style: TextStyle(

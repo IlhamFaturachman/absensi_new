@@ -20,6 +20,11 @@ class _InputAbsenGuruState extends State<InputAbsenGuru> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final mediaQueryHeight = MediaQuery.of(context).size.height;
+    final mediaQueryWidth = MediaQuery.of(context).size.width;
+    final bodyWidth = mediaQueryWidth;
+    final bodyHeight = mediaQueryHeight - MediaQuery.of(context).padding.top;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -28,8 +33,10 @@ class _InputAbsenGuruState extends State<InputAbsenGuru> {
             children: [
               Padding(
                 padding: EdgeInsets.fromLTRB(
-                    size.width * 0.045, size.height * 0.05, 0, 0),
+                    size.width * 0.045, size.height * 0.02, 0, 0),
                 child: Container(
+                  height: bodyHeight * 0.1,
+                  width: bodyWidth,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -42,17 +49,20 @@ class _InputAbsenGuruState extends State<InputAbsenGuru> {
                         child: Container(
                           child: Icon(
                             Icons.arrow_back,
-                            size: 40,
+                            size: bodyHeight * 0.05,
                           ),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: size.width * 0.04),
                         child: Container(
+                          height: bodyHeight * 0.04,
+                          width: bodyWidth * 0.8,
                           child: Text(
                             "New Attendance",
                             style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
+                                fontSize: bodyWidth * 0.06,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       )
@@ -60,11 +70,15 @@ class _InputAbsenGuruState extends State<InputAbsenGuru> {
                   ),
                 ),
               ),
-              FormInputAbsen(
-                judulcontroller: judulcontroller,
-                tanggalcontroller: tanggalcontroller,
-                jamawalcontroller: jamawalcontroller,
-                jamakhircontroller: jamakhircontroller,
+              Container(
+                height: bodyHeight * 0.9,
+                width: bodyWidth,
+                child: FormInputAbsen(
+                  judulcontroller: judulcontroller,
+                  tanggalcontroller: tanggalcontroller,
+                  jamawalcontroller: jamawalcontroller,
+                  jamakhircontroller: jamakhircontroller,
+                ),
               )
             ],
           ),

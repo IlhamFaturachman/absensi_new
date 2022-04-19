@@ -39,275 +39,298 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final mediaQueryHeight = MediaQuery.of(context).size.height;
+    final mediaQueryWidth = MediaQuery.of(context).size.width;
+    final bodyWidth = mediaQueryWidth;
+    final bodyHeight = mediaQueryHeight - MediaQuery.of(context).padding.top;
+
     return Column(
       children: [
-        Container(
-          width: size.width * 1,
-          height: size.height * 0.75,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Form(
-            child: Padding(
-              padding: EdgeInsets.only(
-                  left: size.width * 0.08, top: size.height * 0.05),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    child: Text(
-                      "Title",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Poppins'),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: size.height * 0.01),
-                    child: Container(
-                      width: size.width * 0.85,
-                      height: size.height * 0.075,
-                      child: TextFormField(
-                        controller: widget.judulcontroller,
-                        decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(color: formColor),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(color: Colors.white)),
-                          fillColor: formColor,
-                          filled: true,
-                          hintText: 'Pertemuan 1',
-                          hintStyle: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: size.height * 0.015),
-                    child: Container(
+        SingleChildScrollView(
+          child: Container(
+            width: bodyWidth * 1,
+            height: bodyHeight * 0.8,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Form(
+              child: Padding(
+                padding: EdgeInsets.only(
+                    left: size.width * 0.08, top: size.height * 0.02),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: bodyWidth * 0.85,
+                      height: bodyHeight * 0.03,
                       child: Text(
-                        "Subject",
+                        "Title",
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: bodyWidth * 0.05,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Poppins'),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: size.height * 0.01),
-                    child: Container(
-                      width: size.width * 0.85,
-                      height: size.height * 0.1,
-                      child: DropdownButtonFormField(
-                        hint: Text(
-                          "Select Subject",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        items: subjectItems.map(buildMenuSubject).toList(),
-                        decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(color: formColor),
-                          ),
-                          enabledBorder: OutlineInputBorder(
+                    Padding(
+                      padding: EdgeInsets.only(top: size.height * 0.01),
+                      child: Container(
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.075,
+                        child: TextFormField(
+                          controller: widget.judulcontroller,
+                          decoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(color: Colors.white)),
-                          fillColor: formColor,
-                          filled: true,
-                        ),
-                        value: subjectValue,
-                        onChanged: (String? selectedNewValue) {
-                          setState(
-                            () {
-                              subjectValue = selectedNewValue;
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: size.height * 0.01),
-                    child: Container(
-                      child: Text(
-                        "Class",
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Poppins'),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: size.height * 0.01),
-                    child: Container(
-                      width: size.width * 0.85,
-                      height: size.height * 0.1,
-                      child: DropdownButtonFormField(
-                        hint: Text(
-                          "Select Class",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        items: classItems.map(buildMenuClass).toList(),
-                        decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(color: formColor),
+                              borderSide: BorderSide(color: formColor),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.white)),
+                            fillColor: formColor,
+                            filled: true,
+                            hintText: 'Pertemuan 1',
+                            hintStyle: TextStyle(
+                                fontSize: bodyWidth * 0.04,
+                                fontWeight: FontWeight.bold),
                           ),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(color: Colors.white)),
-                          fillColor: formColor,
-                          filled: true,
                         ),
-                        value: classValue,
-                        onChanged: (String? selectedNewValue) {
-                          setState(
-                            () {
-                              classValue = selectedNewValue;
-                            },
-                          );
-                        },
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: size.height * 0.01),
-                    child: Container(
-                      child: Text(
-                        "Schedule Date",
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Poppins'),
+                    Padding(
+                      padding: EdgeInsets.only(top: size.height * 0.015),
+                      child: Container(
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.03,
+                        child: Text(
+                          "Subject",
+                          style: TextStyle(
+                              fontSize: bodyWidth * 0.05,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Poppins'),
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: size.height * 0.01),
-                    child: Container(
-                      width: size.width * 0.85,
-                      height: size.height * 0.07,
-                      child: RaisedButton(
-                        color: formColor,
-                        child: Container(
-                          child: Text(
-                            
-                            _dateTime == null
-                              ? 'Select Date'
-                              : _dateTime.toString(),
-                              textAlign:TextAlign.justify,
-                              ),
-                              
-                        ),  
-                        onPressed: () {
-                          showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(2000),
-                            lastDate: DateTime(2099),
-                          ).then((date) {
-                            //tambahkan setState dan panggil variabel _dateTime.
-                            setState(() {
-                              _dateTime = date;
+                    Padding(
+                      padding: EdgeInsets.only(top: size.height * 0.01),
+                      child: Container(
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.1,
+                        child: DropdownButtonFormField(
+                          hint: Text(
+                            "Select Subject",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          items: subjectItems.map(buildMenuSubject).toList(),
+                          decoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: formColor),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.white)),
+                            fillColor: formColor,
+                            filled: true,
+                          ),
+                          value: subjectValue,
+                          onChanged: (String? selectedNewValue) {
+                            setState(
+                              () {
+                                subjectValue = selectedNewValue;
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: size.height * 0.01),
+                      child: Container(
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.03,
+                        child: Text(
+                          "Class",
+                          style: TextStyle(
+                              fontSize: bodyWidth * 0.05,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Poppins'),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: size.height * 0.01),
+                      child: Container(
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.1,
+                        child: DropdownButtonFormField(
+                          hint: Text(
+                            "Select Class",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          items: classItems.map(buildMenuClass).toList(),
+                          decoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: formColor),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.white)),
+                            fillColor: formColor,
+                            filled: true,
+                          ),
+                          value: classValue,
+                          onChanged: (String? selectedNewValue) {
+                            setState(
+                              () {
+                                classValue = selectedNewValue;
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: size.height * 0.01),
+                      child: Container(
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.03,
+                        child: Text(
+                          "Schedule Date",
+                          style: TextStyle(
+                              fontSize: bodyWidth * 0.05,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Poppins'),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: size.height * 0.01),
+                      child: Container(
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.07,
+                        child: RaisedButton(
+                          color: formColor,
+                          child: Container(
+                            child: Text(
+                              _dateTime == null
+                                  ? 'Select Date'
+                                  : _dateTime.toString(),
+                              textAlign: TextAlign.start,
+                            ),
+                          ),
+                          onPressed: () {
+                            showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(2000),
+                              lastDate: DateTime(2099),
+                            ).then((date) {
+                              //tambahkan setState dan panggil variabel _dateTime.
+                              setState(() {
+                                _dateTime = date;
+                              });
                             });
-                          });
-                        },
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: size.height * 0.015),
-                    child: Text(
-                      "Schedule Time",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Poppins'),
+                    Padding(
+                      padding: EdgeInsets.only(top: size.height * 0.015),
+                      child: Container(
+                        width: bodyWidth * 0.85,
+                        height: bodyHeight * 0.03,
+                        child: Text(
+                          "Schedule Time",
+                          style: TextStyle(
+                              fontSize: bodyWidth * 0.05,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Poppins'),
+                        ),
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 30),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: size.height * 0.01),
-                          child: Container(
-                            width: size.width * 0.35,
-                            height: size.height * 0.075,
-                            child: TextFormField(
-                              textAlign: TextAlign.center,
-                              controller: widget.jamawalcontroller,
-                              decoration: InputDecoration(
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color: formColor),
-                                ),
-                                enabledBorder: OutlineInputBorder(
+                    Padding(
+                      padding: EdgeInsets.only(right: 30),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: size.height * 0.01),
+                            child: Container(
+                              width: bodyWidth * 0.35,
+                              height: bodyHeight * 0.075,
+                              child: TextFormField(
+                                textAlign: TextAlign.center,
+                                controller: widget.jamawalcontroller,
+                                decoration: InputDecoration(
+                                  focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
-                                fillColor: formColor,
-                                filled: true,
-                                hintText: '08.00',
-                                hintStyle:
-                                    TextStyle(fontWeight: FontWeight.bold),
+                                    borderSide: BorderSide(color: formColor),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide:
+                                          BorderSide(color: Colors.white)),
+                                  fillColor: formColor,
+                                  filled: true,
+                                  hintText: '08.00',
+                                  hintStyle:
+                                      TextStyle(fontSize: bodyWidth * 0.04,fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          child: Text(
-                            "-",
-                            style: TextStyle(fontSize: 50),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: size.height * 0.01),
-                          child: Container(
-                            width: size.width * 0.35,
-                            height: size.height * 0.075,
-                            child: TextFormField(
-                              textAlign: TextAlign.center,
-                              controller: widget.jamakhircontroller,
-                              decoration: InputDecoration(
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color: formColor),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
-                                fillColor: formColor,
-                                filled: true,
-                                hintText: '10.00',
-                                hintStyle:
-                                    TextStyle(fontWeight: FontWeight.bold),
+                          Container(
+                            width: bodyWidth * 0.12,
+                        height: bodyHeight * 0.075,
+                            child: Center(
+                              child: Text(
+                                "-",
+                                style: TextStyle(fontSize: bodyWidth * 0.15),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: EdgeInsets.only(top: size.height * 0.01),
+                            child: Container(
+                              width: bodyWidth * 0.35,
+                              height: bodyHeight * 0.075,
+                              child: TextFormField(
+                                textAlign: TextAlign.center,
+                                controller: widget.jamakhircontroller,
+                                decoration: InputDecoration(
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(color: formColor),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide:
+                                          BorderSide(color: Colors.white)),
+                                  fillColor: formColor,
+                                  filled: true,
+                                  hintText: '10.00',
+                                  hintStyle:
+                                      TextStyle(fontSize: bodyWidth * 0.04,fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: size.height * 0.02),
+          padding: EdgeInsets.only(top: size.height * 0.01),
           child: Container(
-            height: size.height * 0.06,
-            width: size.width * 0.35,
+            height: bodyHeight * 0.06,
+            width: bodyWidth * 0.35,
             decoration: BoxDecoration(
                 color: mainColour, borderRadius: BorderRadius.circular(10)),
             child: TextButton(
@@ -325,10 +348,16 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                   ),
                 );
               },
-              child: Text(
-                "Create",
-                style: TextStyle(
-                    fontSize: 20, color: Colors.white, fontFamily: 'Poppins'),
+              child: Container(
+                height: bodyHeight * 0.035,
+                width: bodyWidth,
+                child: Center(
+                  child: Text(
+                    "Create",
+                    style: TextStyle(
+                        fontSize: bodyWidth * 0.06, color: Colors.white, fontFamily: 'Poppins'),
+                  ),
+                ),
               ),
             ),
           ),
