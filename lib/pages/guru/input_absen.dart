@@ -26,52 +26,36 @@ class _InputAbsenGuruState extends State<InputAbsenGuru> {
     final bodyHeight = mediaQueryHeight - MediaQuery.of(context).padding.top;
 
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        centerTitle: true,
+        titleSpacing: 0,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (c) => HomePageGuru(),
+              ),
+            );
+          },
+          child: Icon(
+            Icons.arrow_back_ios_new,
+            color: Colors.black,
+          ),
+        ),
+        title: Text(
+          "New Attendance",
+          style: TextStyle(
+              color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.white,
+      ),
       body: SingleChildScrollView(
         child: Container(
-          height: size.height,
           child: Column(
             children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(
-                    size.width * 0.045, size.height * 0.02, 0, 0),
-                child: Container(
-                  height: bodyHeight * 0.1,
-                  width: bodyWidth,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Route route = MaterialPageRoute(
-                              builder: (context) => HomePageGuru());
-                          Navigator.push(context, route);
-                        },
-                        child: Container(
-                          child: Icon(
-                            Icons.arrow_back,
-                            size: bodyHeight * 0.05,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: size.width * 0.04),
-                        child: Container(
-                          height: bodyHeight * 0.04,
-                          width: bodyWidth * 0.8,
-                          child: Text(
-                            "New Attendance",
-                            style: TextStyle(
-                                fontSize: bodyWidth * 0.06,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
               Container(
-                height: bodyHeight * 0.9,
                 width: bodyWidth,
                 child: FormInputAbsen(
                   judulcontroller: judulcontroller,

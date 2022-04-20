@@ -22,246 +22,235 @@ class _ProfileMuridState extends State<ProfileMurid> {
     final bodyHeight = mediaQueryHeight - MediaQuery.of(context).padding.top;
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(
-                  size.width * 0.045, size.height * 0.02, 0, 0),
-              child: Container(
-                height: bodyHeight * 0.1,
-                width: bodyWidth,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Route route = MaterialPageRoute(
-                            builder: (context) => HomePageMurid());
-                        Navigator.push(context, route);
-                      },
-                      child: Container(
-                        child: Icon(
-                          Icons.arrow_back,
-                          size: bodyHeight * 0.05,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: size.width * 0.04),
-                      child: Container(
-                        height: bodyHeight * 0.043,
-                        width: bodyWidth * 0.8,
-                        child: Text(
-                          "Profile",
-                          style: TextStyle(
-                              fontSize: bodyWidth * 0.07,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+      appBar: AppBar(
+        elevation: 0,
+        centerTitle: true,
+        titleSpacing: 0,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (c) => HomePageMurid(),
               ),
-            ),
-            Center(
-              child: Padding(
-                padding: EdgeInsets.only(top: size.height * 0.0),
-                child: Container(
-                  height: bodyHeight * 0.2,
-                  width: bodyWidth * 0.25,
-                  child: Image(
-                    image: AssetImage("assets/images/profile.jpg"),
-                    fit: BoxFit.cover,
+            );
+          },
+          child: Icon(
+            Icons.arrow_back_ios_new,
+            color: Colors.black,
+          ),
+        ),
+        title: Text(
+          "Profile",
+          style: TextStyle(
+              color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.white,
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.only(top: size.height * 0.0),
+                  child: Container(
+                    height: bodyHeight * 0.2,
+                    width: bodyWidth * 0.37,
+                    child: Image(
+                      image: AssetImage("assets/images/profile.jpg"),
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Container(
-              height: bodyHeight * 0.68,
-              width: bodyWidth,
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: bodyWidth * 0.85,
-                      height: bodyHeight * 0.03,
-                      child: Text(
-                        "NIP",
-                        style: TextStyle(
-                            fontSize: bodyWidth * 0.05,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Poppins'),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: size.height * 0.01),
-                      child: Container(
-                        width: bodyWidth * 0.85,
-                        height: bodyHeight * 0.075,
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(color: formColor),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(color: Colors.white)),
-                            fillColor: formColor,
-                            filled: true,
-                            hintStyle: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: size.height * 0.02),
-                      child: Container(
+              Container(
+                height: bodyHeight * 0.68,
+                width: bodyWidth,
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
                         width: bodyWidth * 0.85,
                         height: bodyHeight * 0.03,
                         child: Text(
-                          "Full Name",
+                          "NIS",
                           style: TextStyle(
                               fontSize: bodyWidth * 0.05,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Poppins'),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: size.height * 0.01),
-                      child: Container(
-                        width: bodyWidth * 0.85,
-                        height: bodyHeight * 0.075,
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(color: formColor),
-                            ),
-                            enabledBorder: OutlineInputBorder(
+                      Padding(
+                        padding: EdgeInsets.only(top: size.height * 0.01),
+                        child: Container(
+                          width: bodyWidth * 0.85,
+                          height: bodyHeight * 0.075,
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(color: Colors.white)),
-                            fillColor: formColor,
-                            filled: true,
-                            hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                                borderSide: BorderSide(color: formColor),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(color: Colors.white)),
+                              fillColor: formColor,
+                              filled: true,
+                              hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: size.height * 0.02),
-                      child: Container(
-                        width: bodyWidth * 0.85,
-                        height: bodyHeight * 0.03,
-                        child: Text(
-                          "Class",
-                          style: TextStyle(
-                              fontSize: bodyWidth * 0.05,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Poppins'),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: size.height * 0.01),
-                      child: Container(
-                        width: bodyWidth * 0.85,
-                        height: bodyHeight * 0.075,
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(color: formColor),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(color: Colors.white)),
-                            fillColor: formColor,
-                            filled: true,
-                            hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                      Padding(
+                        padding: EdgeInsets.only(top: size.height * 0.02),
+                        child: Container(
+                          width: bodyWidth * 0.85,
+                          height: bodyHeight * 0.03,
+                          child: Text(
+                            "Full Name",
+                            style: TextStyle(
+                                fontSize: bodyWidth * 0.05,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins'),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: size.height * 0.02),
-                      child: Container(
-                        width: bodyWidth * 0.85,
-                        height: bodyHeight * 0.03,
-                        child: Text(
-                          "Attendance Number",
-                          style: TextStyle(
-                              fontSize: bodyWidth * 0.05,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Poppins'),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: size.height * 0.01),
-                      child: Container(
-                        width: bodyWidth * 0.85,
-                        height: bodyHeight * 0.075,
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(color: formColor),
-                            ),
-                            enabledBorder: OutlineInputBorder(
+                      Padding(
+                        padding: EdgeInsets.only(top: size.height * 0.01),
+                        child: Container(
+                          width: bodyWidth * 0.85,
+                          height: bodyHeight * 0.075,
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(color: Colors.white)),
-                            fillColor: formColor,
-                            filled: true,
-                            hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                                borderSide: BorderSide(color: formColor),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(color: Colors.white)),
+                              fillColor: formColor,
+                              filled: true,
+                              hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: size.height * 0.02),
-                      child: Container(
-                        width: bodyWidth * 0.85,
-                        height: bodyHeight * 0.03,
-                        child: Text(
-                          "Phone",
-                          style: TextStyle(
-                              fontSize: bodyWidth * 0.05,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Poppins'),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: size.height * 0.01),
-                      child: Container(
-                        width: bodyWidth * 0.85,
-                        height: bodyHeight * 0.075,
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(color: formColor),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(color: Colors.white)),
-                            fillColor: formColor,
-                            filled: true,
-                            hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                      Padding(
+                        padding: EdgeInsets.only(top: size.height * 0.02),
+                        child: Container(
+                          width: bodyWidth * 0.85,
+                          height: bodyHeight * 0.03,
+                          child: Text(
+                            "Class",
+                            style: TextStyle(
+                                fontSize: bodyWidth * 0.05,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins'),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: EdgeInsets.only(top: size.height * 0.01),
+                        child: Container(
+                          width: bodyWidth * 0.85,
+                          height: bodyHeight * 0.075,
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: formColor),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(color: Colors.white)),
+                              fillColor: formColor,
+                              filled: true,
+                              hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: size.height * 0.02),
+                        child: Container(
+                          width: bodyWidth * 0.85,
+                          height: bodyHeight * 0.03,
+                          child: Text(
+                            "Attendance Number",
+                            style: TextStyle(
+                                fontSize: bodyWidth * 0.05,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins'),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: size.height * 0.01),
+                        child: Container(
+                          width: bodyWidth * 0.85,
+                          height: bodyHeight * 0.075,
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: formColor),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(color: Colors.white)),
+                              fillColor: formColor,
+                              filled: true,
+                              hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: size.height * 0.02),
+                        child: Container(
+                          width: bodyWidth * 0.85,
+                          height: bodyHeight * 0.03,
+                          child: Text(
+                            "Phone",
+                            style: TextStyle(
+                                fontSize: bodyWidth * 0.05,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins'),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: size.height * 0.01),
+                        child: Container(
+                          width: bodyWidth * 0.85,
+                          height: bodyHeight * 0.075,
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: formColor),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(color: Colors.white)),
+                              fillColor: formColor,
+                              filled: true,
+                              hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

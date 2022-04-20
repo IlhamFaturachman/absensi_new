@@ -24,51 +24,36 @@ class _HistoryMurid extends State<HistoryMurid> {
     final bodyHeight = mediaQueryHeight - MediaQuery.of(context).padding.top;
 
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        centerTitle: true,
+        titleSpacing: 0,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (c) => HomePageMurid(),
+              ),
+            );
+          },
+          child: Icon(
+            Icons.arrow_back_ios_new,
+            color: Colors.black,
+          ),
+        ),
+        title: Text(
+          "Profile",
+          style: TextStyle(
+              color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.white,
+      ),
       body: Center(
         child: Container(
+          color: Colors.white,
           child: Column(
             children: [
-              GestureDetector(
-                onTap: () {
-                  Route route =
-                      MaterialPageRoute(builder: (context) => HomePageMurid());
-                  Navigator.push(context, route);
-                },
-                child: Container(
-                  height: bodyHeight * 0.12,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: size.width * 0.045,
-                            top: size.height * 0.05,
-                            bottom: size.height * 0.01),
-                        child: Icon(
-                          Icons.arrow_back,
-                          size: bodyHeight * 0.05,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: size.width * 0.04,
-                            top: size.height * 0.04,
-                            bottom: size.height * 0.0),
-                        child: Container(
-                          height: bodyHeight * 0.06,
-                          width: bodyWidth * 0.8,
-                          child: Text(
-                            "History",
-                            style: TextStyle(
-                                fontSize: bodyWidth * 0.07,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
               Container(
                 height: bodyHeight * 0.9,
                 width: bodyWidth,

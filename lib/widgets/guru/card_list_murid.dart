@@ -23,6 +23,7 @@ class _CardListMurid extends State<CardListMurid> {
     final bodyHeight = mediaQueryHeight - MediaQuery.of(context).padding.top;
 
     return Container(
+      color: Colors.white,
       child: Column(
         children: [
           Padding(
@@ -197,7 +198,7 @@ class _CardListMuridRed extends State<CardListMuridRed> {
                                   borderRadius: BorderRadius.circular(10.0),
                                   color: formColor,
                                 ),
-                                width: bodyWidth * 0.27,
+                                width: bodyWidth * 0.25,
                                 height: bodyHeight * 0.03,
                                 child: Center(
                                   child: Text(

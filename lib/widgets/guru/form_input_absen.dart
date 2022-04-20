@@ -4,7 +4,7 @@ import 'package:absen_new/constants/color.dart';
 import 'package:absen_new/pages/guru/detail_absen.dart';
 import 'package:absen_new/pages/guru/input_absen.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class FormInputAbsen extends StatefulWidget {
   const FormInputAbsen(
@@ -36,11 +36,11 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
   String? subjectValue;
   String? classValue;
   DateTime? _dateTime;
+  DateTime? _initTime;
+  DateTime? _closedTime;
 
   @override
   Widget build(BuildContext context) {
-    var newFormat = DateFormat("yyyy-MM-dd");
-    String updatedDt = newFormat.format(DateTime.now());
     Size size = MediaQuery.of(context).size;
     final mediaQueryHeight = MediaQuery.of(context).size.height;
     final mediaQueryWidth = MediaQuery.of(context).size.width;
@@ -51,11 +51,9 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
       children: [
         SingleChildScrollView(
           child: Container(
+            color: Colors.white,
             width: bodyWidth * 1,
-            height: bodyHeight * 0.8,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-            ),
+            height: bodyHeight * 0.89,
             child: Form(
               child: Padding(
                 padding: EdgeInsets.only(
@@ -212,22 +210,38 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                       child: Container(
                         width: bodyWidth * 0.85,
                         height: bodyHeight * 0.07,
-                        child: ElevatedButton(
+                        child: GestureDetector(
                           child: Container(
-                            color: formColor,
-                            child: Text(
-                              _dateTime == null
-                                  ? 'Select Date'
-                                  : _dateTime.toString(),
-                              textAlign: TextAlign.start,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: formColor,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    _dateTime == null
+                                        ? 'Select Date'
+                                        : "${_dateTime?.toLocal()}"
+                                            .split(' ')[0],
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
-                          onPressed: () {
-                            showDatePicker(
-                              context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime(2000),
-                              lastDate: DateTime(2099),
+                          onTap: () {
+                            DatePicker.showDatePicker(
+                              context,
+                              minTime: DateTime(2000, 3, 5),
+                              maxTime: DateTime(2099, 6, 7),
+                              currentTime: DateTime.now(),
                             ).then((date) {
                               //tambahkan setState dan panggil variabel _dateTime.
                               setState(() {
@@ -239,7 +253,7 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: size.height * 0.015),
+                      padding: EdgeInsets.only(top: size.height * 0.03),
                       child: Container(
                         width: bodyWidth * 0.85,
                         height: bodyHeight * 0.03,
@@ -258,29 +272,39 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Padding(
-                            padding: EdgeInsets.only(top: size.height * 0.01),
-                            child: Container(
-                              width: bodyWidth * 0.35,
-                              height: bodyHeight * 0.075,
-                              child: TextFormField(
-                                textAlign: TextAlign.center,
-                                controller: widget.jamawalcontroller,
-                                decoration: InputDecoration(
-                                  focusedBorder: OutlineInputBorder(
+                          Container(
+                            child: Padding(
+                              padding: EdgeInsets.only(top: size.height * 0.01),
+                              child: GestureDetector(
+                                onTap: () {
+                                  DatePicker.showTimePicker(
+                                    context,
+                                    currentTime: DateTime.now(),
+                                  ).then((time) {
+                                    setState(() {
+                                      _initTime = time;
+                                      print(_initTime);
+                                    });
+                                  });
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(color: formColor),
+                                    color: formColor,
                                   ),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide:
-                                          BorderSide(color: Colors.white)),
-                                  fillColor: formColor,
-                                  filled: true,
-                                  hintText: '08.00',
-                                  hintStyle: TextStyle(
-                                      fontSize: bodyWidth * 0.04,
-                                      fontWeight: FontWeight.bold),
+                                  width: bodyWidth * 0.35,
+                                  height: bodyHeight * 0.075,
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Center(
+                                      child: Text(
+                                        _initTime == null
+                                            ? 'Select Initial Time'
+                                            : "${_initTime?.toLocal()}"
+                                                .split(' ')[1],
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -300,24 +324,36 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                             child: Container(
                               width: bodyWidth * 0.35,
                               height: bodyHeight * 0.075,
-                              child: TextFormField(
-                                textAlign: TextAlign.center,
-                                controller: widget.jamakhircontroller,
-                                decoration: InputDecoration(
-                                  focusedBorder: OutlineInputBorder(
+                              child: GestureDetector(
+                                onTap: () {
+                                  DatePicker.showTimePicker(
+                                    context,
+                                    currentTime: DateTime.now(),
+                                  ).then((time) {
+                                    setState(() {
+                                      _closedTime = time;
+                                      print(_closedTime);
+                                    });
+                                  });
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(color: formColor),
+                                    color: formColor,
                                   ),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide:
-                                          BorderSide(color: Colors.white)),
-                                  fillColor: formColor,
-                                  filled: true,
-                                  hintText: '10.00',
-                                  hintStyle: TextStyle(
-                                      fontSize: bodyWidth * 0.04,
-                                      fontWeight: FontWeight.bold),
+                                  width: bodyWidth * 0.35,
+                                  height: bodyHeight * 0.075,
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Center(
+                                      child: Text(
+                                        _closedTime == null
+                                            ? 'Select Closed Time'
+                                            : "${_closedTime?.toLocal()}"
+                                                .split(' ')[1],
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -325,50 +361,53 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                         ],
                       ),
                     ),
+                    Center(
+                      child: Padding(
+                        padding: EdgeInsets.only(top: size.height * 0.04, right: size.width * 0.06),
+                        child: Container(
+                          height: bodyHeight * 0.06,
+                          width: bodyWidth * 0.35,
+                          decoration: BoxDecoration(
+                              color: mainColour,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (c) => DetailAbsen(
+                                      judulcontroller.text,
+                                      subjectValue,
+                                      classValue,
+                                      _dateTime,
+                                      _initTime,
+                                      _closedTime),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              height: bodyHeight * 0.035,
+                              width: bodyWidth,
+                              child: Center(
+                                child: Text(
+                                  "Create",
+                                  style: TextStyle(
+                                      fontSize: bodyWidth * 0.06,
+                                      color: Colors.white,
+                                      fontFamily: 'Poppins'),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
             ),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.only(top: size.height * 0.01),
-          child: Container(
-            height: bodyHeight * 0.06,
-            width: bodyWidth * 0.35,
-            decoration: BoxDecoration(
-                color: mainColour, borderRadius: BorderRadius.circular(10)),
-            child: TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (c) => DetailAbsen(
-                        judulcontroller.text,
-                        subjectValue,
-                        classValue,
-                        _dateTime,
-                        jamawalcontroller.text,
-                        jamakhircontroller.text),
-                  ),
-                );
-              },
-              child: Container(
-                height: bodyHeight * 0.035,
-                width: bodyWidth,
-                child: Center(
-                  child: Text(
-                    "Create",
-                    style: TextStyle(
-                        fontSize: bodyWidth * 0.06,
-                        color: Colors.white,
-                        fontFamily: 'Poppins'),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        )
       ],
     );
   }

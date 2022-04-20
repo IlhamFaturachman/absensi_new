@@ -25,65 +25,53 @@ class _HistoryGuru extends State<HistoryGuru> {
     final bodyHeight = mediaQueryHeight - MediaQuery.of(context).padding.top;
 
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            GestureDetector(
-              onTap: () {
-                Route route =
-                    MaterialPageRoute(builder: (context) => HomePageGuru());
-                Navigator.push(context, route);
-              },
-              child: Container(
-                height: bodyHeight * 0.12,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: size.width * 0.045,
-                          top: size.height * 0.05,
-                          bottom: size.height * 0.01),
-                      child: Icon(
-                        Icons.arrow_back,
-                        size: bodyHeight * 0.05,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: size.width * 0.04,
-                          top: size.height * 0.05,
-                          bottom: size.height * 0.01),
-                      child: Container(
-                        height: bodyHeight * 0.06,
-                        width: bodyWidth * 0.8,
-                        child: Text(
-                          "History",
-                          style: TextStyle(
-                              fontSize: bodyWidth * 0.07, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+      appBar: AppBar(
+        elevation: 0,
+        centerTitle: true,
+        titleSpacing: 0,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (c) => HomePageGuru(),
               ),
-            ),
-            Container(
-              height: bodyHeight * 0.9,
-              width: bodyWidth,
-              child: Expanded(
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        top: size.height * 0.0,
-                        left: size.width * 0.08,
-                        bottom: size.height * 0.0),
-                    child: IsiHistoryGuru(),
+            );
+          },
+          child: Icon(
+            Icons.arrow_back_ios_new,
+            color: Colors.black,
+          ),
+        ),
+        title: Text(
+          "History",
+          style: TextStyle(
+              color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.white,
+      ),
+      body: Container(
+        color: Colors.white,
+        child: Center(
+          child: Column(
+            children: [
+              Container(
+                height: bodyHeight * 0.9,
+                width: bodyWidth,
+                child: Expanded(
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          top: size.height * 0.03,
+                          left: size.width * 0.08,
+                          bottom: size.height * 0.0),
+                      child: IsiHistoryGuru(),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

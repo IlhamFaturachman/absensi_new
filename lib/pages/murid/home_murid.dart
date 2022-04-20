@@ -7,6 +7,7 @@ import 'package:absen_new/pages/murid/scanned_qr.dart';
 import 'package:absen_new/widgets/guru/navbarguru.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:intl/intl.dart';
 
 class HomePageMurid extends StatefulWidget {
   const HomePageMurid({Key? key}) : super(key: key);
@@ -40,82 +41,152 @@ class _HomePageMuridState extends State<HomePageMurid> {
     final bodyHeight = mediaQueryHeight - MediaQuery.of(context).padding.top;
 
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        centerTitle: true,
+        titleSpacing: 0,
+        leading: Padding(
+          padding: EdgeInsets.only(left: 20),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (c) => ProfileMurid(),
+                ),
+              );
+            },
+            child: Image(
+              image: AssetImage("assets/images/profpic.jpg"),
+            ),
+          ),
+        ),
+        title: Text(
+          "Hi, Achmad Rizqy",
+          style: TextStyle(
+              color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.white,
+      ),
       body: Center(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(
-                  left: size.width * 0.08, top: size.height * 0.04),
-              child: Container(
-                height: bodyHeight * 0.1,
-                width: bodyWidth,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Route route = MaterialPageRoute(
-                            builder: (context) => ProfileMurid());
-                        Navigator.push(context, route);
-                      },
-                      child: Container(
-                        height: bodyHeight * 0.08,
-                        width: bodyWidth * 0.15,
-                        child: Image(
-                          image: AssetImage("assets/images/profpic.jpg"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: size.width * 0.04),
-                      child: Container(
-                        child: Text(
-                          "Hi, Achmad Rizqi",
-                          style: TextStyle(
-                              fontSize: bodyWidth * 0.07,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                  right: size.width * 0.35, top: size.height * 0.05),
-              child: Container(
-                height: bodyHeight * 0.06,
-                width: bodyWidth,
-                child: Text(
-                  "Good Morning",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: bodyWidth * 0.09, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            SingleChildScrollView(
-              child: Center(
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                    right: size.width * 0.35, top: size.height * 0.05),
                 child: Container(
-                  height: bodyHeight * 0.33,
-                width: bodyWidth * 0.9,
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    color: mainColour,
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: size.width * 0.03,
-                                  top: size.width * 0.05),
-                              child: Container(
-                                height: bodyHeight * 0.05,
+                  height: bodyHeight * 0.06,
+                  width: bodyWidth,
+                  child: Text(
+                    "Good Morning",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: bodyWidth * 0.09,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              SingleChildScrollView(
+                child: Center(
+                  child: Container(
+                    height: bodyHeight * 0.33,
+                    width: bodyWidth * 0.9,
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      color: mainColour,
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    left: size.width * 0.03,
+                                    top: size.width * 0.05),
+                                child: Container(
+                                  height: bodyHeight * 0.05,
+                                  child: Text(
+                                    "",
+                                    style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: bodyWidth * 0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    left: size.width * 0.45,
+                                    top: size.width * 0.08, right: size.width * 0.1),
+                                child: Container(
+                                  height: bodyHeight * 0.068,
+                                  child: Text(
+                                    DateFormat('KK:mm').format(
+                                      DateTime.now(),
+                                    ),
+                                    style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: bodyWidth * 0.13,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(left: size.width * 0.1, top: size.height * 0.03),
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          right: size.width * 0,
+                                          top: size.width * 0.15),
+                                      child: Container(
+                                        height: bodyHeight * 0.053,
+                                        child: Text(
+                                          DateFormat('EEEE').format(
+                                        DateTime.now(),
+                                      ),
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              fontSize: bodyWidth * 0.08,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          left: size.width * 0.0,
+                                          top: size.width * 0.0),
+                                      child: Container(
+                                        height: bodyHeight * 0.053,
+                                        child: Text(
+                                          DateFormat('yyyy-MM-dd').format(
+                                        DateTime.now(),
+                                      ),
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              fontSize: bodyWidth * 0.075,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    left: size.width * 0.32,
+                                    top: size.width * 0.05),
                                 child: Text(
                                   "",
                                   style: TextStyle(
@@ -125,100 +196,35 @@ class _HomePageMuridState extends State<HomePageMurid> {
                                   ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: size.width * 0.5, top: size.width * 0.05),
-                              child: Container(
-                                height: bodyHeight * 0.068,
-                                child: Text(
-                                  "08.00",
-                                  style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: bodyWidth * 0.115,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Column(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      right: size.width * 0.16,
-                                      top: size.width * 0.15),
-                                  child: Container(
-                                    height: bodyHeight * 0.053,
-                                    child: Text(
-                                      "Friday",
-                                      style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontSize: bodyWidth * 0.075,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: size.width * 0.04,
-                                      top: size.width * 0.0),
-                                  child: Container(
-                                    height: bodyHeight * 0.053,
-                                    child: Text(
-                                      "22 April 2022",
-                                      style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontSize: bodyWidth * 0.075,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: size.width * 0.32,
-                                  top: size.width * 0.05),
-                              child: Text(
-                                "",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: bodyWidth * 0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       floatingActionButton: SizedBox(
-          width: bodyWidth * 0.23,
-          height: bodyHeight * 0.13,
-          child: FittedBox(
-              child: FloatingActionButton(
-                  backgroundColor: secondaryColour,
-                  onPressed: () => _scan(),
-                  child: Icon(
-                    Icons.qr_code_scanner,
-                    size: bodyHeight * 0.04,
-                  )))),
+        width: bodyWidth * 0.23,
+        height: bodyHeight * 0.13,
+        child: FittedBox(
+          child: FloatingActionButton(
+            backgroundColor: secondaryColour,
+            onPressed: () => _scan(),
+            child: Icon(
+              Icons.qr_code_scanner,
+              size: bodyHeight * 0.04,
+            ),
+          ),
+        ),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: Container(
-        height: bodyHeight * 0.085,
+        height: bodyHeight * 0.08,
         child: BottomAppBar(
           color: mainColour,
           shape: CircularNotchedRectangle(),
@@ -245,12 +251,12 @@ class _HomePageMuridState extends State<HomePageMurid> {
                         children: [
                           Icon(
                             Icons.person,
-                            size: bodyHeight * 0.05,
+                            size: bodyHeight * 0.045,
                             color: Colors.white,
                           ),
                           Text("Profile",
                               style: TextStyle(
-                                  fontSize: bodyWidth * 0.04,
+                                  fontSize: bodyWidth * 0.035,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white)),
                         ],
@@ -277,12 +283,12 @@ class _HomePageMuridState extends State<HomePageMurid> {
                         children: [
                           Icon(
                             Icons.history,
-                            size: bodyHeight * 0.05,
+                            size: bodyHeight * 0.045,
                             color: Colors.white,
                           ),
                           Text("History",
                               style: TextStyle(
-                                  fontSize: bodyWidth * 0.04,
+                                  fontSize: bodyWidth * 0.035,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white)),
                         ],
