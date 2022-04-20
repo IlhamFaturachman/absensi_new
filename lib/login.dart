@@ -43,7 +43,8 @@ class _LoginPageState extends State<LoginPage> {
                       "Welcome To ngabsen!",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: bodyWidth * 0.08, fontWeight: FontWeight.bold),
+                          fontSize: bodyWidth * 0.08,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -77,7 +78,8 @@ class _LoginPageState extends State<LoginPage> {
                         filled: true,
                         hintText: 'username',
                         hintStyle: TextStyle(
-                            fontSize: bodyWidth * 0.045, fontWeight: FontWeight.bold),
+                            fontSize: bodyWidth * 0.045,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -86,7 +88,8 @@ class _LoginPageState extends State<LoginPage> {
                   width: bodyWidth * 0.7,
                   height: bodyHeight * 0.1,
                   child: TextFormField(
-                    controller: usernamecontroller,
+                    obscureText: true,
+                    controller: passwordcontroller,
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -99,7 +102,8 @@ class _LoginPageState extends State<LoginPage> {
                       filled: true,
                       hintText: 'password',
                       hintStyle: TextStyle(
-                          fontSize: bodyWidth * 0.045, fontWeight: FontWeight.bold),
+                          fontSize: bodyWidth * 0.045,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
