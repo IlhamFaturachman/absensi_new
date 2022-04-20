@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_typing_uninitialized_variables
 
 import 'package:absen_new/constants/color.dart';
+import 'package:absen_new/pages/guru/input_absen.dart';
 import 'package:absen_new/pages/guru/list_murid.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -46,7 +47,12 @@ class _DetailAbsenState extends State<DetailAbsen> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          //
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (c) => InputAbsenGuru(),
+                            ),
+                          );
                         },
                         child: Container(
                           child: Icon(
@@ -80,7 +86,7 @@ class _DetailAbsenState extends State<DetailAbsen> {
                           " " +
                           widget.classValue +
                           " " +
-                          widget.tanggal +
+                          widget.tanggal.toString() +
                           " " +
                           widget.jamawal +
                           " " +
@@ -198,7 +204,7 @@ class _DetailAbsenState extends State<DetailAbsen> {
                                   borderSide: BorderSide(color: Colors.white)),
                               fillColor: formColor,
                               filled: true,
-                              hintText: widget.tanggal +
+                              hintText: widget.tanggal.toString() +
                                   "\n" +
                                   widget.jamawal +
                                   " - " +

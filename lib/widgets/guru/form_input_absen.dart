@@ -1,10 +1,10 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unnecessary_new
 
 import 'package:absen_new/constants/color.dart';
 import 'package:absen_new/pages/guru/detail_absen.dart';
 import 'package:absen_new/pages/guru/input_absen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class FormInputAbsen extends StatefulWidget {
   const FormInputAbsen(
@@ -32,12 +32,15 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
     'Bahasa Daerah'
   ];
   final classItems = ['X RPL A', 'XI RPL A', 'XII RPL A', 'XII ANIM A'];
+
   String? subjectValue;
   String? classValue;
   DateTime? _dateTime;
 
   @override
   Widget build(BuildContext context) {
+    var newFormat = DateFormat("yyyy-MM-dd");
+    String updatedDt = newFormat.format(DateTime.now());
     Size size = MediaQuery.of(context).size;
     return Column(
       children: [
@@ -193,22 +196,21 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                     child: Container(
                       width: size.width * 0.85,
                       height: size.height * 0.07,
-                      child: RaisedButton(
-                        color: formColor,
+                      child: ElevatedButton(
                         child: Container(
                           child: Text(
-                            
                             _dateTime == null
-                              ? 'Select Date'
-                              : _dateTime.toString(),
-                              textAlign:TextAlign.justify,
-                              ),
-                              
-                        ),  
+                                ? 'Select Date'
+                                : _dateTime.toString(),
+                            textAlign: TextAlign.justify,
+                          ),
+                        ),
                         onPressed: () {
                           showDatePicker(
                             context: context,
-                            initialDate: DateTime.now(),
+                            initialDate: DateTime.parse(DateFormat('yyyy-MM-dd')
+                                .format(DateTime.now())
+                                .toString()),
                             firstDate: DateTime(2000),
                             lastDate: DateTime(2099),
                           ).then((date) {
@@ -319,7 +321,7 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                         judulcontroller.text,
                         subjectValue,
                         classValue,
-                        tanggalcontroller.text,
+                        _dateTime,
                         jamawalcontroller.text,
                         jamakhircontroller.text),
                   ),
