@@ -19,17 +19,23 @@ class _ListMurid extends State<ListMurid> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final mediaQueryHeight = MediaQuery.of(context).size.height;
+    final mediaQueryWidth = MediaQuery.of(context).size.width;
+    final bodyWidth = mediaQueryWidth;
+    final bodyHeight = mediaQueryHeight - MediaQuery.of(context).padding.top;
+
     return Scaffold(
       body: Center(
-        child: Container(
-          child: Column(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Route route =
-                      MaterialPageRoute(builder: (context) => HomePageGuru());
-                  Navigator.push(context, route);
-                },
+        child: Column(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Route route =
+                    MaterialPageRoute(builder: (context) => HomePageGuru());
+                Navigator.push(context, route);
+              },
+              child: Container(
+                height: bodyHeight * 0.12,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -41,34 +47,40 @@ class _ListMurid extends State<ListMurid> {
                       ),
                       child: Icon(
                         Icons.arrow_back,
-                        size: 40,
+                        size: bodyHeight * 0.05,
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
                           left: size.width * 0.04, top: size.height * 0.05, bottom: size.height * 0.01),
                       child: Container(
+                        height: bodyHeight * 0.04,
+                        width: bodyWidth * 0.8,
                         child: Text(
                           "Student List",
                           style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
+                              fontSize: bodyWidth * 0.07, fontWeight: FontWeight.bold),
                         ),
                       ),
                     )
                   ],
                 ),
               ),
-              Expanded(
+            ),
+            Container(
+              height: bodyHeight * 0.9,
+              width: bodyWidth,
+              child: Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: EdgeInsets.only(
-                        top: size.height * 0, left: size.width * 0.08, bottom: size.height * 0.05),
+                        top: size.height * 0, left: size.width * 0.08, bottom: size.height * 0.00),
                     child: IsiListMurid(),
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

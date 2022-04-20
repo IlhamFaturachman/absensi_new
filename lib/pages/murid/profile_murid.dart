@@ -22,7 +22,7 @@ class _ProfileMuridState extends State<ProfileMurid> {
     final bodyHeight = mediaQueryHeight - MediaQuery.of(context).padding.top;
 
     return Scaffold(
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -51,6 +51,8 @@ class _ProfileMuridState extends State<ProfileMurid> {
                     Padding(
                       padding: EdgeInsets.only(left: size.width * 0.04),
                       child: Container(
+                        height: bodyHeight * 0.043,
+                        width: bodyWidth * 0.8,
                         child: Text(
                           "Profile",
                           style: TextStyle(
@@ -77,7 +79,7 @@ class _ProfileMuridState extends State<ProfileMurid> {
               ),
             ),
             Container(
-              height: bodyHeight * 0.7,
+              height: bodyHeight * 0.68,
               width: bodyWidth,
               child: Center(
                 child: Column(

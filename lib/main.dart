@@ -1,6 +1,8 @@
 
 
 import 'package:absen_new/login.dart';
+import 'package:absen_new/pages/guru/home.dart';
+import 'package:absen_new/pages/murid/home_murid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
