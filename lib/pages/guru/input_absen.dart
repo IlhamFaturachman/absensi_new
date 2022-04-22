@@ -13,8 +13,6 @@ class InputAbsenGuru extends StatefulWidget {
 
 final TextEditingController judulcontroller = TextEditingController();
 final TextEditingController tanggalcontroller = TextEditingController();
-final TextEditingController jamawalcontroller = TextEditingController();
-final TextEditingController jamakhircontroller = TextEditingController();
 
 class _InputAbsenGuruState extends State<InputAbsenGuru> {
   @override
@@ -60,8 +58,7 @@ class _InputAbsenGuruState extends State<InputAbsenGuru> {
                 child: FormInputAbsen(
                   judulcontroller: judulcontroller,
                   tanggalcontroller: tanggalcontroller,
-                  jamawalcontroller: jamawalcontroller,
-                  jamakhircontroller: jamakhircontroller,
+
                 ),
               )
             ],

@@ -1,37 +1,120 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_new
+// ignore_for_file: prefer_const_constructors, unnecessary_new, deprecated_member_use
+
+import 'dart:convert';
 
 import 'package:absen_new/constants/color.dart';
+import 'package:absen_new/model/class.dart';
+import 'package:absen_new/model/insert_data.dart';
+import 'package:absen_new/model/subject.dart';
 import 'package:absen_new/pages/guru/detail_absen.dart';
 import 'package:absen_new/pages/guru/input_absen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:http/http.dart' as http;
 
 class FormInputAbsen extends StatefulWidget {
-  const FormInputAbsen(
-      {key,
-      required this.judulcontroller,
-      required this.tanggalcontroller,
-      required this.jamawalcontroller,
-      required this.jamakhircontroller})
-      : super(key: key);
+  const FormInputAbsen({
+    key,
+    required this.judulcontroller,
+    required this.tanggalcontroller,
+  }) : super(key: key);
 
   final TextEditingController judulcontroller;
   final TextEditingController tanggalcontroller;
-  final TextEditingController jamawalcontroller;
-  final TextEditingController jamakhircontroller;
 
   @override
   State<FormInputAbsen> createState() => _FormInputAbsenState();
 }
 
 class _FormInputAbsenState extends State<FormInputAbsen> {
-  final subjectItems = [
-    'Pemrograman Dasar',
-    'Bahasa Indonesia',
-    'PWPB',
-    'Bahasa Daerah'
-  ];
-  final classItems = ['X RPL A', 'XI RPL A', 'XII RPL A', 'XII ANIM A'];
+  final url = 'https://mighty-springs-18950.herokuapp.com';
+
+  Future<Subject> getSubject() async {
+    final response = await http.get(
+      Uri.parse(url + '/api/ngabsen/admin/subject'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      var items = json.decode(response.body)['data'];
+      print(items);
+      setState(() {
+        subjectList = items;
+      });
+      return Subject.fromJson(jsonDecode(response.body));
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception(response.statusCode);
+    }
+  }
+
+  Future<ClassAttendances> getClass() async {
+    final response = await http.get(
+      Uri.parse(url + '/api/ngabsen/admin/class'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      var items = json.decode(response.body)['data'];
+      print(items);
+      setState(() {
+        classList = items;
+      });
+      return ClassAttendances.fromJson(jsonDecode(response.body));
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception(response.statusCode);
+    }
+  }
+
+  Future<InsertData> inputData() async {
+    final response = await http.post(
+      Uri.parse(url + '/api/ngabsen/teacher/createQr'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        "subject_id": subjectValue.toString(),
+        "date": _dateTime.toString(),
+        "open_time": _initTime.toString(),
+        "closed_time": _closedTime.toString(),
+        "title": judulcontroller.text,
+        "class_id": classValue.toString(),
+        "qr_value": subjectValue.toString() +
+            _dateTime.toString() +
+            _initTime.toString() +
+            _closedTime.toString() +
+            judulcontroller.text +
+            classValue.toString(),
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      return InsertData.fromJson(jsonDecode(response.body));
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception(response.statusCode);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getSubject();
+    getClass();
+  }
+
+  List subjectList = [];
+  List classList = [];
 
   String? subjectValue;
   String? classValue;
@@ -121,7 +204,12 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                             "Select Subject",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          items: subjectItems.map(buildMenuSubject).toList(),
+                          items: subjectList.map((item) {
+                            return DropdownMenuItem(
+                              child: Text(item["name"].toString()),
+                              value: item['id'].toString(),
+                            );
+                          }).toList(),
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -134,12 +222,10 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                             filled: true,
                           ),
                           value: subjectValue,
-                          onChanged: (String? selectedNewValue) {
-                            setState(
-                              () {
-                                subjectValue = selectedNewValue;
-                              },
-                            );
+                          onChanged: (value) {
+                            setState(() {
+                              subjectValue = value as String?;
+                            });
                           },
                         ),
                       ),
@@ -168,7 +254,16 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                             "Select Class",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          items: classItems.map(buildMenuClass).toList(),
+                          items: classList.map((item) {
+                            return DropdownMenuItem(
+                              child: Text(item['grade'].toString() +
+                                  " " +
+                                  item['major']['name'].toString() +
+                                  " " +
+                                  item['class'].toString()),
+                              value: item['id'].toString(),
+                            );
+                          }).toList(),
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -363,7 +458,8 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                     ),
                     Center(
                       child: Padding(
-                        padding: EdgeInsets.only(top: size.height * 0.04, right: size.width * 0.06),
+                        padding: EdgeInsets.only(
+                            top: size.height * 0.04, right: size.width * 0.06),
                         child: Container(
                           height: bodyHeight * 0.06,
                           width: bodyWidth * 0.35,
@@ -411,19 +507,4 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
       ],
     );
   }
-
-  DropdownMenuItem<String> buildMenuSubject(String item) => DropdownMenuItem(
-        value: item,
-        child: Text(
-          item,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-      );
-  DropdownMenuItem<String> buildMenuClass(String item) => DropdownMenuItem(
-        value: item,
-        child: Text(
-          item,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-      );
 }
