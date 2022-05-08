@@ -57,8 +57,6 @@ class _InputAbsenGuruState extends State<InputAbsenGuru> {
                 width: bodyWidth,
                 child: FormInputAbsen(
                   judulcontroller: judulcontroller,
-                  tanggalcontroller: tanggalcontroller,
-
                 ),
               )
             ],

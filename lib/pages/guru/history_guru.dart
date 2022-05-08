@@ -6,6 +6,7 @@ import 'package:absen_new/dummy/isi_hitory_murid.dart';
 import 'package:absen_new/dummy/isi_list_murid.dart';
 import 'package:absen_new/pages/guru/home.dart';
 import 'package:absen_new/pages/guru/input_absen.dart';
+import 'package:absen_new/widgets/guru/card_history_guru.dart';
 import 'package:flutter/material.dart';
 
 class HistoryGuru extends StatefulWidget {
@@ -65,7 +66,7 @@ class _HistoryGuru extends State<HistoryGuru> {
                           top: size.height * 0.03,
                           left: size.width * 0.08,
                           bottom: size.height * 0.0),
-                      child: IsiHistoryGuru(),
+                      child: CardHistoryGuru(),
                     ),
                   ),
                 ),

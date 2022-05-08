@@ -1,44 +1,95 @@
-import 'dart:async';
+// // ignore_for_file: unused_field, prefer_final_fields
 
-import 'package:absen_new/pages/murid/scanned_qr.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+// import 'package:flutter/material.dart';
+// import 'package:qr_code_scanner/qr_code_scanner.dart';
+// import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-class Scanner extends StatefulWidget {
-  const Scanner({Key? key}) : super(key: key);
+// class Scanner extends StatefulWidget {
+//   const Scanner({Key? key}) : super(key: key);
 
-  @override
-  State<Scanner> createState() => _ScannerState();
-}
+//   @override
+//   State<Scanner> createState() => _ScannerState();
+// }
 
-class _ScannerState extends State<Scanner> {
-  String _data = "";
+// class _ScannerState extends State<Scanner> {
+//   String _data = "";
+//   bool _flashOn = false;
+//   bool _frontCam = false;
+//   Barcode? result;
+//   GlobalKey _qrKey = GlobalKey(debugLabel: 'QR');
+//   QRViewController? _controller;
 
-  _scan() async {
-    await FlutterBarcodeScanner.scanBarcode(
-            "#000000", "cancel", true, ScanMode.QR)
-        .then((value) => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (c) => ScannedQr(value),
-              ),
-            ));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Column(
-          children: [
-            TextButton(
-              onPressed: () => _scan(),
-              child: Text("scan"),
-            ),
-            Text(_data)
-          ],
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Container(
+//         child: Stack(
+//           children: [
+//             QRView(
+//               key: _qrKey,
+//               overlay: QrScannerOverlayShape(borderColor: Colors.white),
+//               onQRViewCreated: (QRViewController controller) {
+//                 this._controller = controller;
+//                 controller.scannedDataStream.listen((scanData) {
+//                   setState(() {
+//                     result = scanData;
+//                   });
+//                  });
+//               },
+//             ),
+//             Align(
+//               alignment: Alignment.topCenter,
+//               child: Container(
+//                 child: Text(
+//                   "Scanner",
+//                   style: TextStyle(
+//                     fontSize: 20,
+//                     color: Colors.white,
+//                   ),
+//                 ),
+//               ),
+//             ),
+//             Align(
+//               alignment: Alignment.bottomCenter,
+//               child: ButtonBar(
+//                 alignment: MainAxisAlignment.spaceAround,
+//                 children: [
+//                   IconButton(
+//                     onPressed: () {
+//                       _controller?.toggleFlash;
+//                       setState(() {
+//                         _flashOn = !_flashOn;
+//                       });
+//                     },
+                    
+//                     icon: Icon(_flashOn ? Icons.flash_on : Icons.flash_off),
+//                   ),
+//                   IconButton(
+//                     onPressed: () {
+//                       _controller?.toggleFlash;
+//                       setState(() {
+//                         _frontCam = !_frontCam;
+//                       });
+//                     },
+                    
+//                     icon: Icon(_frontCam ? Icons.camera_front : Icons.camera_rear),
+//                   ),
+//                   IconButton(
+//                     onPressed: () {
+//                       _controller?.toggleFlash;
+//                       setState(() {
+//                         _flashOn = !_flashOn;
+//                       });
+//                     },
+                    
+//                     icon: Icon(_flashOn ? Icons.flash_on : Icons.flash_off),
+//                   ),
+//                 ],
+//               ),
+//             )
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

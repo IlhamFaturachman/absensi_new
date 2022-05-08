@@ -42,6 +42,8 @@ dependencies:
   flutter_native_splash: ^2.1.5
   shared_preferences: ^2.0.13
 
+
+
 flutter_native_splash:
   color: '#ffffff'
   image: assets/images/ngabsen.png

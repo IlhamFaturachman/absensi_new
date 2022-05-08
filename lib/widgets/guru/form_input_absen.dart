@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_new, deprecated_member_use
+// ignore_for_file: prefer_const_constructors, unnecessary_new, deprecated_member_use, non_constant_identifier_names
 
 import 'dart:convert';
 
@@ -11,16 +11,15 @@ import 'package:absen_new/pages/guru/input_absen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 class FormInputAbsen extends StatefulWidget {
   const FormInputAbsen({
     key,
     required this.judulcontroller,
-    required this.tanggalcontroller,
   }) : super(key: key);
 
   final TextEditingController judulcontroller;
-  final TextEditingController tanggalcontroller;
 
   @override
   State<FormInputAbsen> createState() => _FormInputAbsenState();
@@ -77,21 +76,22 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
     final response = await http.post(
       Uri.parse(url + '/api/ngabsen/teacher/createQr'),
       headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
+        'Content-type': 'application/json',
+        'Accept': 'application/json',
       },
       body: jsonEncode(<String, String>{
-        "subject_id": subjectValue.toString(),
-        "date": _dateTime.toString(),
-        "open_time": _initTime.toString(),
-        "closed_time": _closedTime.toString(),
-        "title": judulcontroller.text,
-        "class_id": classValue.toString(),
-        "qr_value": subjectValue.toString() +
-            _dateTime.toString() +
+        'teacher_id': '1',
+        'title': judulcontroller.text,
+        'subject_id': subjectValue.toString(),
+        'class_id': classValue.toString(),
+        'date': _formattedDate.toString(),
+        'open_time': _initTime.toString(),
+        'closed_time': _closedTime.toString(),
+        'qr_value': subjectValue.toString() +
+            classValue.toString() +
+            _formattedDate.toString() +
             _initTime.toString() +
-            _closedTime.toString() +
-            judulcontroller.text +
-            classValue.toString(),
+            _closedTime.toString(),
       }),
     );
 
@@ -102,7 +102,7 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
     } else {
       // If the server did not return a 201 CREATED response,
       // then throw an exception.
-      throw Exception(response.statusCode);
+      throw Exception(response.body);
     }
   }
 
@@ -121,10 +121,17 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
   DateTime? _dateTime;
   DateTime? _initTime;
   DateTime? _closedTime;
+  String? _formattedDate;
+
+  final GlobalKey _formkey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final dateFmt = DateFormat('yyyy-MM-dd');
+    String formattedDate = dateFmt.format(DateTime.now());
+    final timeFmt = DateFormat('yyyy-MM-dd hh:mm:ss');
+
     final mediaQueryHeight = MediaQuery.of(context).size.height;
     final mediaQueryWidth = MediaQuery.of(context).size.width;
     final bodyWidth = mediaQueryWidth;
@@ -138,6 +145,7 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
             width: bodyWidth * 1,
             height: bodyHeight * 0.89,
             child: Form(
+              key: _formkey,
               child: Padding(
                 padding: EdgeInsets.only(
                     left: size.width * 0.08, top: size.height * 0.02),
@@ -332,17 +340,52 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                             ),
                           ),
                           onTap: () {
-                            DatePicker.showDatePicker(
-                              context,
-                              minTime: DateTime(2000, 3, 5),
-                              maxTime: DateTime(2099, 6, 7),
-                              currentTime: DateTime.now(),
-                            ).then((date) {
-                              //tambahkan setState dan panggil variabel _dateTime.
-                              setState(() {
-                                _dateTime = date;
-                              });
-                            });
+                            // DatePicker.showDatePicker(
+                            //   context,
+                            //   minTime: DateTime.parse(
+                            //     dateFmt.format(
+                            //       DateTime(2000, 3, 5),
+                            //     ),
+                            //   ),
+                            //   maxTime: DateTime.parse(
+                            //     dateFmt.format(
+                            //       DateTime(2099, 6, 7),
+                            //     ),
+                            //   ),
+                            //   currentTime: DateTime.parse(
+                            //     dateFmt.format(
+                            //       DateTime.now(),
+                            //     ),
+                            //   ),
+                            // ).then(
+                            //   (date) {
+                            //     //tambahkan setState dan panggil variabel _dateTime.
+                            //     setState(
+                            //       () {
+                            //         _dateTime =
+                            //             DateTime.parse(dateFmt.format(date!));
+                            //         print(_dateTime);
+                            //         print(formatter);
+                            //       },
+                            //     );
+                            //   },
+                            // );
+                            showDatePicker(
+                                    context: context,
+                                    firstDate: DateTime(2000),
+                                    lastDate: DateTime(2099),
+                                    initialDate: DateTime.now())
+                                .then(
+                              (date) {
+                                //tambahkan setState dan panggil variabel _dateTime.
+                                setState(
+                                  () {
+                                    _dateTime = date;
+                                    _formattedDate = dateFmt.format(date!);
+                                  },
+                                );
+                              },
+                            );
                           },
                         ),
                       ),
@@ -374,10 +417,15 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                                 onTap: () {
                                   DatePicker.showTimePicker(
                                     context,
-                                    currentTime: DateTime.now(),
+                                    currentTime: DateTime.parse(
+                                      timeFmt.format(
+                                        DateTime.now(),
+                                      ),
+                                    ),
                                   ).then((time) {
                                     setState(() {
-                                      _initTime = time;
+                                      _initTime =
+                                          DateTime.parse(timeFmt.format(time!));
                                       print(_initTime);
                                     });
                                   });
@@ -395,8 +443,7 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                                       child: Text(
                                         _initTime == null
                                             ? 'Select Initial Time'
-                                            : "${_initTime?.toLocal()}"
-                                                .split(' ')[1],
+                                            : "${_initTime}".split(' ')[1],
                                       ),
                                     ),
                                   ),
@@ -423,7 +470,11 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                                 onTap: () {
                                   DatePicker.showTimePicker(
                                     context,
-                                    currentTime: DateTime.now(),
+                                    currentTime: DateTime.parse(
+                                      timeFmt.format(
+                                        DateTime.now(),
+                                      ),
+                                    ),
                                   ).then((time) {
                                     setState(() {
                                       _closedTime = time;
@@ -445,7 +496,7 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                                         _closedTime == null
                                             ? 'Select Closed Time'
                                             : "${_closedTime?.toLocal()}"
-                                                .split(' ')[1],
+                                                .split(':')[0],
                                       ),
                                     ),
                                   ),
@@ -467,20 +518,26 @@ class _FormInputAbsenState extends State<FormInputAbsen> {
                               color: mainColour,
                               borderRadius: BorderRadius.circular(10)),
                           child: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (c) => DetailAbsen(
-                                      judulcontroller.text,
-                                      subjectValue,
-                                      classValue,
-                                      _dateTime,
-                                      _initTime,
-                                      _closedTime),
-                                ),
-                              );
+                            onPressed: () async {
+                              inputData();
+
+                              print(_dateTime);
+                              print(_initTime);
+                              print(_closedTime);
                             },
+                            //   Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //       builder: (c) => DetailAbsen(
+                            //           judulcontroller.text,
+                            //           subjectValue,
+                            //           classValue,
+                            //           _dateTime,
+                            //           _initTime,
+                            //           _closedTime),
+                            //     ),
+                            //   );
+                            // },
                             child: Container(
                               height: bodyHeight * 0.035,
                               width: bodyWidth,
